@@ -105,13 +105,13 @@ function candidatos(event){
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
         var prestamo = (subprestamo+(prima*periodo))*0.9;
-        var credito = Math.round((prestamo/mensualidad));
+        var credito = Math.round((prestamo/mensualidad)*1.1);
         
     } else var mensualidad = subprestamo*prestamos;
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
         var prestamo = (subprestamo+(prima*periodo))*0.9;
-        var credito = Math.round((prestamo/mensualidad));
+        var credito = Math.round((prestamo/mensualidad)*1.1);
         //console.log("prestamo total: "+prestamo);
 
     //console.log("periodo en años es: "+periodo);
@@ -408,7 +408,7 @@ const facturaNormalGrafica = facturaNormal;
 
 
 let myChart = new Chart(ctx,{
-    type: 'line',
+    type: 'bar',
     data: {
         labels: names,
         datasets: [{
@@ -498,8 +498,8 @@ function flujoFinanciero(event){
         var neto = parseFloat(document.getElementById('neto').value);
         var fecha = (document.getElementById('fecha').value);
         var directivo = document.getElementById('directivo');
-        var cetes = 0.1107;
-        //var cetes = parseFloat(document.getElementById('cetes').value)/100;
+        //var cetes = 0.1107;
+        var cetes = parseFloat(document.getElementById('cetes').value)/100;
         var FDTT = FDT - CC - autocop;
         let sfv = (kwp*dolar*1.2)*1.16;
         //var antiguedad = document.getElementById('fecha'); //por definir 
@@ -595,20 +595,30 @@ function flujoFinanciero(event){
         var m =0;
         var pagos = 0;
         FDT = FDT - deuda;
-        console.log(FDE)
+        console.log(FDT)
         i = deuda
 
         while ( (FDE-FDT)> mensualidad ){
             console.log("mes "+ m + ": deuda: "+ i.toFixed(2) +" FDE:"+FDE.toFixed(2)+" FDT:"+ FDT.toFixed(2) + " Pagos: " +pagos.toFixed(2))
-            lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
-            document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
-            
+            //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
+            col1 = "Mes "+ m +":" + "<br>"
+            col2 = "Deuda: "+ i.toFixed(2)+ "<br>"
+            col3 = "FDE: "+FDE.toFixed(2)+ "<br>"
+            col4 = "FDT: "+ FDT.toFixed(2)+ "<br>"
+            col5 = "Pagos: " +pagos.toFixed(2)+ "<br>"
+    
+            document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
+            document.getElementById('col2').insertAdjacentHTML("beforeend",col2)
+            document.getElementById('col3').insertAdjacentHTML("beforeend",col3)
+            document.getElementById('col4').insertAdjacentHTML("beforeend",col4)
+            document.getElementById('col5').insertAdjacentHTML("beforeend",col5)
+            //document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
             m= m+1
             
             pagos = pagos + mensualidad
             FDT = FDT  + mensualidad + ((cetes*FDT)/12) + (bruto*rendimientos)
             FDE = FDE + ((cetes*FDE)/12) + (bruto*rendimientos)
-            i = i - mensualidad
+            i = FDE-FDT - mensualidad
             if (i < mensualidad){
                     i = FDE-FDT
                     if (i<mensualidad){
@@ -618,8 +628,19 @@ function flujoFinanciero(event){
                         pagos = pagos + mensualidad
                         FDT = FDT  + mensualidad + ((cetes*FDT)/12) + (bruto*rendimientos)
                         FDE = FDE + ((cetes*FDE)/12) + (bruto*rendimientos)
-                        lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
-                        document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
+                        //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
+                        //document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
+                        col1 = " Mes "+ m +": " + "<br>"
+                        col2 = " Deuda: "+ i.toFixed(2)+ "<br>"
+                        col3 = " FDE: "+FDE.toFixed(2)+ "<br>"
+                        col4 = " FDT: "+ FDT.toFixed(2)+ "<br>"
+                        col5 = " Pagos: " +pagos.toFixed(2)+ "<br>"
+    
+                        document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
+                        document.getElementById('col2').insertAdjacentHTML("beforeend",col2)
+                        document.getElementById('col3').insertAdjacentHTML("beforeend",col3)
+                        document.getElementById('col4').insertAdjacentHTML("beforeend",col4)
+                        document.getElementById('col5').insertAdjacentHTML("beforeend",col5)
                     }else mensualidad=mensualidad
             }else mensualidad = mensualidad
 
