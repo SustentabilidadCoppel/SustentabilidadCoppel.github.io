@@ -1,18 +1,55 @@
-body{
+body {
     margin: 0;
+    font-family: 'Lora', serif;
+    
+    
+}
 
+.nav{
+    margin:0;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-family: 'Lora';
+    font-size: 40px;
+    position: fixed;
+    width: 100%;
+    background-color: rgb(83,97,109);
 }
 .form-primero{
     padding-top: 5rem;
-    background-color: rgb(255, 219, 127);
-    text-align: center;
+    background-color: rgb(249, 190, 41);
+    text-align: -webkit-center;
     align-items:flex-start;
     font-size: larger;
+    background-image: url(/fondo.webp);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-bottom: 10px;
+}
+
+.section{
+    
+    width: 400px;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 30px;
+    border-color: rgba(242, 238, 229, 0);
+    align-items:flex-start;
+    text-align: center;
+    background-color: rgba(242, 238, 229, 0.751);
 }
 
 .form-primero input{
     width: 250px;
     align-content: center;
+}
+
+.container-f2{
+    align-items: left;
+    text-align: center;
 }
 
 .form-segundo{
@@ -31,7 +68,7 @@ body{
     background-color: rgb(255, 219, 127);
     text-align: center;
     align-items:flex-start;
-    font-size: larger;
+    font-size: large;
 }
 
 .container {
@@ -41,32 +78,56 @@ body{
     align-self: center;
     width:fit-content;
     display:inline-flex;
-    margin: 0;
+    margin: 30px;
 }
-
-.box {
-    display:inline;
-}
-
 
 .col1{
-    margin-right: 20px;
-}
-.nav{
-    background-color: #245CA7;
-    margin:0;
-    color: white;
-    padding-left: 20px;
-    text-align: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:large;
-    position: fixed;
-    width: 100%;
+    margin-right: 30px;
 }
 
+
 button{
-    border-color: aquamarine;
-    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 3px;
+    border-width: 1px;
+    border-radius: 7px;
+    
     
 }
 
+button:hover {
+    box-shadow: 0 6px 16px 0 rgba(0,0,0,0.24);
+    background-color: rgb(40, 35, 179);
+    padding:  10px 20px ;
+    transition: 0.3s;
+    border-radius: 7px;
+    
+}
+
+
+#ad{
+    padding-bottom:0;
+    display: block; 
+}
+
+footer{
+    padding: 20px;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    background-color: #245CA7;
+    color: azure;
+}
+
+@media (max-width:360px){
+    .form-tercero{
+        font-size: small;
+        background-color: yellow;
+    }
+}

@@ -120,7 +120,7 @@ function candidatos(event){
     if (FDTT >= prestamo){
         const subtotal=neto-mensualidad;
         if ((subtotal) > (bruto*0.4)){
-            document.getElementById('resultado').innerText= "Felicidades "+ nombre.toUpperCase() +" tienes posibilidades de un prestamo de $"+ prestamo.toFixed(2) +" pesos, el tiempo de tu prestamo es de "+ credito +" meses aproximadamente, con una mensualidad de $"+ mensualidad.toFixed(2) +" pesos." ;
+            document.getElementById('resultado').innerHTML= "Felicidades "+ nombre.toUpperCase() +" tienes posibilidades de un prestamo de <b>$"+ prestamo.toFixed(2) +"</b> pesos, el tiempo de tu prestamo es de <b>"+ credito +" meses </b> aproximadamente, con una mensualidad de <b>$"+ mensualidad.toFixed(2) +" pesos</b>." ;
         } else document.getElementById('resultado').innerText= "Lo siento, " + nombre.toUpperCase() + " no cumples con los requisitos.";
     }
     else document.getElementById('resultado').innerText= "Lo siento, " + nombre.toUpperCase() + " no cumples con los requisitos.";
@@ -486,6 +486,7 @@ let myChart = new Chart(ctx,{
 
 
 function flujoFinanciero(event){
+        document.getElementById('flujo').remove('flujo');
         var nombre = document.getElementById('nombre').value;
         var FDE = parseFloat(document.getElementById('FDE').value);
         var FDT = parseFloat(document.getElementById('FDT').value);
@@ -498,8 +499,8 @@ function flujoFinanciero(event){
         var neto = parseFloat(document.getElementById('neto').value);
         var fecha = (document.getElementById('fecha').value);
         var directivo = document.getElementById('directivo');
-        //var cetes = 0.1107;
-        var cetes = parseFloat(document.getElementById('cetes').value)/100;
+        var cetes = 0.09;
+        //var cetes = parseFloat(document.getElementById('cetes').value)/100;
         var FDTT = FDT - CC - autocop;
         let sfv = (kwp*dolar*1.2)*1.16;
         //var antiguedad = document.getElementById('fecha'); //por definir 
@@ -643,8 +644,8 @@ function flujoFinanciero(event){
                         document.getElementById('col5').insertAdjacentHTML("beforeend",col5)
                     }else mensualidad=mensualidad
             }else mensualidad = mensualidad
-
         }
+    var advertencia = "La tasa de rendimiento del fondo de ahorro se contempla que sea del 9%."
+    document.getElementById('ad').insertAdjacentText("beforeend", advertencia)    
 }
     
- 
