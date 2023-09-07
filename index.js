@@ -390,18 +390,25 @@ function energia(event){
     };
     console.log("-----Pago acumulado de: "+ totalsumado3Normal);
 
-console.log("total sumado: "+ totalsumado);
-console.log("total sumado2: "+ totalsumado2);
-console.log("total sumado3: "+ totalsumado3);
-console.log("total sumadoGLOBAL: "+ (totalsumado + totalsumado2 + totalsumado3) );
-console.log(factura);
-console.log("total sumado: "+ totalsumadoNormal);
-console.log("total sumado2: "+ totalsumado2Normal);
-console.log("total sumado3: "+ totalsumado3Normal);
-console.log("total sumadoGLOBAL: "+ (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal) );
-console.log(facturaNormal);
+    var conProyecto = (totalsumado + totalsumado2 + totalsumado3);
+    var sinProyecto = (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal);
+    console.log("total sumado: "+ totalsumado);
+    console.log("total sumado2: "+ totalsumado2);
+    console.log("total sumado3: "+ totalsumado3);
+    console.log("total sumadoGLOBAL con paneles: "+ (totalsumado + totalsumado2 + totalsumado3) );
+    console.log(factura);
+    console.log("total sumado: "+ totalsumadoNormal);
+    console.log("total sumado2: "+ totalsumado2Normal);
+    console.log("total sumado3: "+ totalsumado3Normal);
+    console.log("total sumadoGLOBAL sin paneles: "+ (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal) );
+    console.log(facturaNormal);
+
+    document.getElementById('sinProyecto').innerText= "Pago anual sin paneles: $" + sinProyecto;
+    document.getElementById('conProyecto').innerHTML= "Pago anual con paneles: $" + conProyecto+ "<br><i>Los valores son aproximados</i>";
+    
+
 //grafica en canvas por JS 
-const ctx = document.getElementById("myChart");
+const ctx = document.getElementById("myChart").getContext('2d');
 const names = nombreMeses;
 const facturaGrafica = factura;
 const facturaNormalGrafica = facturaNormal;
@@ -415,73 +422,84 @@ let myChart = new Chart(ctx,{
             label: 'Pago mensual con paneles',
             data: facturaGrafica,
             backgroundColor:[
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)',
-                'rgba(35,91,78, 0.2)'
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)',
+                'rgba(247,99,0,0.6)'
             ],
             borderColor: [
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)',
-                'rgba(35,91,78, 1)'  
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)',
+                'rgba(247,99,0,1)'  
             ],
-            borderWidth: 2
+            borderWidth: 2,
+            tension: 0.4
         },
         {
             label: 'Pago mensual sin paneles',
             data: facturaNormalGrafica,
             backgroundColor:[
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)',
-                'rgba(157,36,73, 0.2)'
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)',
+                'rgba(83,97,109,0.5)'
             ],
             borderColor: [
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)',
-                'rgba(157,36,73, 1)'  
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)',
+                'rgba(83,97,109,1)'  
             ],
-            borderWidth: 2
+            borderWidth: 2,
+            tension: 2
         }
     ]
+    },
+    options: {
+        responsive: true,
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]
+                    return parseFloat(tooltipValue).toLocaleString();
+                }
+            }
+        }
     }
 })
-
-
 }
 
 
@@ -604,8 +622,8 @@ function flujoFinanciero(event){
             //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
             col1 = "Mes "+ m +":" + "<br>"
             col2 = "Deuda: "+ i.toFixed(2)+ "<br>"
-            col3 = "FDE: "+FDE.toFixed(2)+ "<br>"
-            col4 = "FDT: "+ FDT.toFixed(2)+ "<br>"
+            col3 = "FRE: "+FDE.toFixed(2)+ "<br>"
+            col4 = "FRT: "+ FDT.toFixed(2)+ "<br>"
             col5 = "Pagos: " +pagos.toFixed(2)+ "<br>"
     
             document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
@@ -633,8 +651,8 @@ function flujoFinanciero(event){
                         //document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
                         col1 = " Mes "+ m +": " + "<br>"
                         col2 = " Deuda: "+ i.toFixed(2)+ "<br>"
-                        col3 = " FDE: "+FDE.toFixed(2)+ "<br>"
-                        col4 = " FDT: "+ FDT.toFixed(2)+ "<br>"
+                        col3 = " FRE: "+FDE.toFixed(2)+ "<br>"
+                        col4 = " FRT: "+ FDT.toFixed(2)+ "<br>"
                         col5 = " Pagos: " +pagos.toFixed(2)+ "<br>"
     
                         document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
@@ -645,7 +663,7 @@ function flujoFinanciero(event){
                     }else mensualidad=mensualidad
             }else mensualidad = mensualidad
         }
-    var advertencia = "La tasa de rendimiento del fondo de ahorro se contempla que sea del 9%."
+    var advertencia = "La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%."
     document.getElementById('ad').insertAdjacentText("beforeend", advertencia)    
 }
     

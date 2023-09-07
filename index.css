@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: 'Lora', serif;
+    min-width: 300px;
     
     
 }
@@ -15,6 +16,7 @@ body {
     position: fixed;
     width: 100%;
     background-color: rgb(83,97,109);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .form-primero{
     padding-top: 5rem;
@@ -47,32 +49,55 @@ body {
     align-content: center;
 }
 
-.container-f2{
-    align-items: left;
+.section-f2{
+    
+    width:fit-content;
+    max-width: 300px;
+    border-style: solid;
+    border-width: 10px;
+    
+    border-color: rgba(242, 238, 229, 0);
+    align-items:flex-start;
     text-align: center;
+    background-color: rgba(242, 238, 229, 0.751);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    
 }
 
 .form-segundo{
-    background-color: rgb(255, 219, 127);
-    text-align: center;
+    background-color:rgb(83,97,109);
+    text-align:  -webkit-center;
     align-items:flex-start;
     font-size: large;
+    padding: 10px 0px;
+    
 }
 
 .chart{
-    background-color: rgb(255, 219, 127);
-    color: black;
+    min-width: 560px;
+    min-height: max-content;
+    background-color:rgb(38, 143, 234);
+    color: rgb(255, 255, 255);
+    text-align: -webkit-center;
+}
+
+#myChart{
+    align-items: center;
+    align-content: center;
+    text-align: center;
 }
 
 .form-tercero{
-    background-color: rgb(255, 219, 127);
+    background: linear-gradient(#F69B5C,#245CA7);
     text-align: center;
     align-items:flex-start;
     font-size: large;
 }
 
-.container {
-    background-color: rgb(255, 219, 127);
+.section-f3 {
+    padding-left: 20px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgba(242, 238, 229, 0.751); 
     align-items: center;
     justify-items: center;
     align-self: center;
@@ -83,6 +108,7 @@ body {
 
 .col1{
     margin-right: 30px;
+      
 }
 
 
@@ -97,8 +123,6 @@ button{
     margin: 3px;
     border-width: 1px;
     border-radius: 7px;
-    
-    
 }
 
 button:hover {
@@ -114,6 +138,11 @@ button:hover {
 #ad{
     padding-bottom:0;
     display: block; 
+    color: white;
+}
+
+i{
+    font-size: 14px;
 }
 
 footer{
@@ -129,5 +158,13 @@ footer{
     .form-tercero{
         font-size: small;
         background-color: yellow;
+    }
+
+    .chart{
+        background: white;
+    }
+
+    #myChart{
+        height: 200px;
     }
 }
