@@ -73,21 +73,20 @@ body {
     
 }
 
-.chart{
-    min-width: 560px;
-    min-height: max-content;
-    background-color:rgb(38, 143, 234);
+.section-chart{
+    background-color:bisque;
     color: rgb(255, 255, 255);
     text-align: -webkit-center;
 }
 
-#myChart{
+.myChart{
     align-items: center;
     align-content: center;
     text-align: center;
 }
 
 .form-tercero{
+    padding-top: 15px;
     background: linear-gradient(#F69B5C,#245CA7);
     text-align: center;
     align-items:flex-start;
@@ -154,17 +153,20 @@ footer{
     color: azure;
 }
 
-@media (max-width:360px){
-    .form-tercero{
-        font-size: small;
-        background-color: yellow;
-    }
 
+@media (max-width:560px){     
+    
+    .section-f3{
+        margin: 22px;
+        font-size: 7px;
+    }  
+    
     .chart{
-        background: white;
+        height: 50vh;
+    }
+    .nav{
+        font-size: 20px;
     }
 
-    #myChart{
-        height: 200px;
-    }
+    
 }

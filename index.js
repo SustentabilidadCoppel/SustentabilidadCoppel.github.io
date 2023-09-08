@@ -3,8 +3,8 @@ const clean = document.getElementById("limpiar");
 const corrida = document.getElementById("flujo");
 const energetica = document.getElementById("energia");
 
-cuestionario.addEventListener("click", candidatos);
 clean.addEventListener("click", limpiar);
+cuestionario.addEventListener("click", candidatos);
 corrida.addEventListener("click", flujoFinanciero);
 energetica.addEventListener("click", energia);
 
@@ -165,38 +165,44 @@ function energia(event){
     var totalsumado2Normal = 0;
     var totalsumado3Normal = 0;
 
+    var totalgeneracion = 0;
+    var totaldemanda = 0;
+
     //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
-        console.log("ciclo 1,consumo del mes: "+ meses[i]);
+        //console.log("ciclo 1,consumo del mes: "+ meses[i]);
 
-    var eficiencia = 0.82;
-    var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
-    var facturacion = (meses[i])-generacion;
-    var facturacionNormal = (meses[i]);
-    var base =0;
-    var interbajo = 0;
-    var interalto = 0;
-    var excedente = 0;
-    var base1 =0;
-    var interbajo1 = 0;
-    var interalto1 = 0;
-    var excedente1 = 0;
+        var eficiencia = 0.82;
+        var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
+        var facturacion = (meses[i])-generacion;
+        var facturacionNormal = (meses[i]);
+        var base =0;
+        var interbajo = 0;
+        var interalto = 0;
+        var excedente = 0;
+        var base1 =0;
+        var interbajo1 = 0;
+        var interalto1 = 0;
+        var excedente1 = 0;
+
+
+
+
     
-    //facturacion con paneles inicio
-    if(facturacion>75){
-        var base = 75*tarifaBase[i];
-        if((facturacion-75)>125){
-            var interbajo = 125*(tarifaInterbajo[i]);
-              if ((facturacion-200)>0){
-                  var excedente = ((facturacion-200)*tarifaExcedente[i])
-                }else var excedente = 0
-        }else if((facturacion-75)<0){
-            var interbajo = 0;
-
-        }else interbajo= (facturacion-75)*tarifaInterbajo[i]
-    }else if (facturacion<25){
-        base= 25*tarifaBase[i]
-    } else base = facturacion*(tarifaBase[i]);
+        //facturacion con paneles inicio
+        if(facturacion>75){
+            var base = 75*tarifaBase[i];
+            if((facturacion-75)>125){
+                var interbajo = 125*(tarifaInterbajo[i]);
+                if ((facturacion-200)>0){
+                    var excedente = ((facturacion-200)*tarifaExcedente[i])
+                    }else var excedente = 0
+            }else if((facturacion-75)<0){
+                var interbajo = 0;
+            }else interbajo= (facturacion-75)*tarifaInterbajo[i]
+        }else if (facturacion<25){
+            base= 25*tarifaBase[i]
+        } else base = facturacion*(tarifaBase[i]);
 
     var subtotal = base + interbajo + excedente;
     var total = Math.round(subtotal*1.16);
@@ -222,22 +228,37 @@ function energia(event){
     var totalNormal = Math.round(subtotal1*1.16);
     //facturacion normal fin
 
+    //pagos de cada escalon sin paneles
+    //console.log("base sp:" + base1);
+    console.log("interbajo sp:" +interbajo1);
+    console.log("exc sp:" +excedente1);
+    //console.log("subtotal sp:" +subtotal1);
+    //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
+
+
     console.log("generacion: "+ generacion);
-    console.log("Pago con paneles: "+ facturacion);
-    console.log("Pago sin paneles: "+ totalNormal);
+    console.log("demanda: "+ meses[i]);
+    //console.log("Pago con paneles: "+ total);
+    //console.log("Pago sin paneles: "+ totalNormal);
     
-   
+    totalgeneracion = totalgeneracion + generacion;
+    totaldemanda = totaldemanda + meses[i];
+
     factura.push(total);
     facturaNormal.push(totalNormal);
     totalsumado = totalsumado + total;
     totalsumadoNormal = totalsumadoNormal + totalNormal;
+
     };
-    console.log("-----Pago acumulado de: "+ totalsumadoNormal);
+
+    //console.log("-----Pago acumulado de: " + totalsumadoNormal);
+    console.log("generacion total part1: " + totalgeneracion);
+    console.log("Demanda acumulada part1: " + totaldemanda);
 
 
     //mayo-oct  4 ESCALONES DE TARIFAS
     for (i=4 ; i < 10 ; i++ ){
-        console.log("ciclo 2, consumo del mes: "+ meses[i]);
+        //console.log("ciclo 2, consumo del mes: "+ meses[i]);
 
     var eficiencia = 0.82;
     var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
@@ -310,27 +331,38 @@ function energia(event){
     var subtotal1 = (base1 + interbajo1 + interalto1 + excedente1);
     var totalNormal = Math.round(subtotal1*1.16);
     //facturacion normal fin
-    console.log("base sp:" + base1);
-    console.log("interbajo sp:" +interbajo1);
+
+    //pagos de cada escalon
+    //console.log("base sp:" + base1);
+    //console.log("interbajo sp:" +interbajo1);
     console.log("interalto sp:" +interalto1);
     console.log("exc sp:" +excedente1);
-    console.log("subtotal sp:" +subtotal1);
-    console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
+    //console.log("subtotal sp:" +subtotal1);
+    //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
     console.log("generacion: "+ generacion);
-    console.log("Pago con paneles: "+ facturacion);
-    console.log("Pago sin paneles: "+ totalNormal);
+    console.log("demanda: "+ meses[i]);
+    //console.log("Pago con paneles: "+ total);
+    //console.log("Pago sin paneles: "+ totalNormal);
 
+    totalgeneracion = totalgeneracion + generacion;
+    totaldemanda = totaldemanda + meses[i];
 
     factura.push(total);
     totalsumado2 = totalsumado2 + total;
     facturaNormal.push(totalNormal);
     totalsumado2Normal = totalsumado2Normal + totalNormal;
+    
     };
-    console.log("-----Pago acumulado de: "+ totalsumado2Normal);
+
+    //console.log("-----Pago acumulado de: "+ totalsumado2Normal);
+    console.log("generacion total part2: " + totalgeneracion);
+    console.log("Demanda acumulada part2: " + totaldemanda);
+
+
     //nov-dic 3 ESCALONES DE TARIFAS
     for (i=10 ; i < 12 ; i++ ){
-        console.log("ciclo 3, consumo del mes: "+ meses[i]);
+        //console.log("ciclo 3, consumo del mes: "+ meses[i]);
 
     var eficiencia = 0.82;
     var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
@@ -381,14 +413,31 @@ function energia(event){
     var totalNormal = Math.round(subtotal1*1.16);
     //facturacion normal fin
     
-    console.log("energia facturada: "+ facturacion);
-    console.log("Pago de: " + total);
+    //pagos de cada escalon
+    //console.log("base sp:" + base1);
+    console.log("interbajo sp:" +interbajo1);   
+    console.log("exc sp:" +excedente1);
+    //console.log("subtotal sp:" +subtotal1);
+    //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
+
+    console.log("generacion: "+ generacion);
+    console.log("demanda: "+ meses[i]);
+    //console.log("Pago con paneles: " + total);
+    //console.log("Pago sin paneles: " + total);
+
+    totalgeneracion = totalgeneracion + generacion;
+    totaldemanda = totaldemanda + meses[i];
+
     factura.push(total);
     facturaNormal.push(totalNormal);
     totalsumado3 = totalsumado3 + total;
     totalsumado3Normal = totalsumado3Normal + totalNormal;
+    
     };
-    console.log("-----Pago acumulado de: "+ totalsumado3Normal);
+
+    //console.log("-----Pago acumulado de: "+ totalsumado3Normal);
+    console.log("generacion total part3: " + totalgeneracion);
+    console.log("Demanda acumulada part3: " + totaldemanda);
 
     var conProyecto = (totalsumado + totalsumado2 + totalsumado3);
     var sinProyecto = (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal);
@@ -407,14 +456,16 @@ function energia(event){
     document.getElementById('conProyecto').innerHTML= "Pago anual con paneles: $" + conProyecto+ "<br><i>Los valores son aproximados</i>";
     
 
-//grafica en canvas por JS 
-const ctx = document.getElementById("myChart").getContext('2d');
-const names = nombreMeses;
-const facturaGrafica = factura;
-const facturaNormalGrafica = facturaNormal;
+    //grafica en canvas por JS 
+    canvas = document.getElementById("myChart");
+    ctx= canvas.getContext("2d");
+    const names = nombreMeses;
+    const facturaGrafica = factura;
+    const facturaNormalGrafica = facturaNormal;
 
+    Chart.defaults.color= "black";
 
-let myChart = new Chart(ctx,{
+    var myChart =  new Chart(ctx,{
     type: 'bar',
     data: {
         labels: names,
@@ -450,7 +501,8 @@ let myChart = new Chart(ctx,{
                 'rgba(247,99,0,1)'  
             ],
             borderWidth: 2,
-            tension: 0.4
+            hoverBackgroundColor:'rgba(247,99,0,1)',
+            hoverBorderWidth: 0,
         },
         {
             label: 'Pago mensual sin paneles',
@@ -484,7 +536,8 @@ let myChart = new Chart(ctx,{
                 'rgba(83,97,109,1)'  
             ],
             borderWidth: 2,
-            tension: 2
+            hoverBackgroundColor:'rgba(83,97,109,1)',
+            hoverBorderWidth: 0,
         }
     ]
     },
@@ -501,7 +554,6 @@ let myChart = new Chart(ctx,{
     }
 })
 }
-
 
 function flujoFinanciero(event){
         document.getElementById('flujo').remove('flujo');

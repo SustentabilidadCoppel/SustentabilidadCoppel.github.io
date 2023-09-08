@@ -48,7 +48,7 @@
             <button type="button" id="Calculadora">Evaluar</button><br> <!--forzamos el ultimo boton del formulario de submit a button para que se mantengan visibles los resultados-->
         </div>
         </form>
-        <form  method="get" class="form-segundo" >
+        <form id="vida" method="get" class="form-segundo" >
             <div  class="section-f2" >
             <label>Ingresa tu consumo bimestral del año 2022.</label><br>
             <label>Periodo 05 OCT al 06 DIC 22</label>
@@ -68,11 +68,11 @@
             <label id="conProyecto"></label>
             </div>
         </form>
-        <section class="chart">
-        <canvas id="myChart" height="80px" width="300px" ></canvas>
-        </section>
+            <section class="section-chart">
+                <canvas id="myChart" class="myChart" height=50vh width="300px" ></canvas>
+            </section>
     <form  method="get" class="form-tercero">
-        <label>Corrida financiera</label><br>
+        <label id="corrida-f">Corrida financiera</label><br>
         <button type="button" id="flujo">Mostrar</button><br>
         <div class="section-f3">
                 <p class="col1" id="col1"></p>
@@ -84,7 +84,7 @@
             <label ><i id="ad"></i></label>
         </form>
     <footer class="footer">
-        Derechos reservados Grupo Coppel® 
+        Derechos reservados Grupo Coppel ® 
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.3/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="/index.js"></script>
