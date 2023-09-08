@@ -168,13 +168,15 @@ function energia(event){
     var totalgeneracion = 0;
     var totaldemanda = 0;
 
+    var extra = 0;
+
     //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
 
         var eficiencia = 0.82;
         var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
-        var facturacion = (meses[i])-generacion;
+        var facturacion = (meses[i])-generacion + extra;
         var facturacionNormal = (meses[i]);
         var base =0;
         var interbajo = 0;
@@ -185,8 +187,11 @@ function energia(event){
         var interalto1 = 0;
         var excedente1 = 0;
 
-
-
+        //condicional para generacion extra 
+        if (facturacion < 0){
+            extra = extra + (meses[i]-generacion)
+        } else {extra = 0; 
+            console.log("no hay extra");}
 
     
         //facturacion con paneles inicio
@@ -201,8 +206,8 @@ function energia(event){
                 var interbajo = 0;
             }else interbajo= (facturacion-75)*tarifaInterbajo[i]
         }else if (facturacion<25){
-            base= 25*tarifaBase[i]
-        } else base = facturacion*(tarifaBase[i]);
+                base= 25*tarifaBase[i]
+            } else base = facturacion*(tarifaBase[i]);
 
     var subtotal = base + interbajo + excedente;
     var total = Math.round(subtotal*1.16);
@@ -230,14 +235,14 @@ function energia(event){
 
     //pagos de cada escalon sin paneles
     //console.log("base sp:" + base1);
-    console.log("interbajo sp:" +interbajo1);
-    console.log("exc sp:" +excedente1);
+    //console.log("interbajo sp:" +interbajo1);
+    //console.log("exc sp:" +excedente1);
     //console.log("subtotal sp:" +subtotal1);
     //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
 
     console.log("generacion: "+ generacion);
-    console.log("demanda: "+ meses[i]);
+    console.log("demanda: "+ nombreMeses[i]+" "+ meses[i]);
     //console.log("Pago con paneles: "+ total);
     //console.log("Pago sin paneles: "+ totalNormal);
     
@@ -248,12 +253,13 @@ function energia(event){
     facturaNormal.push(totalNormal);
     totalsumado = totalsumado + total;
     totalsumadoNormal = totalsumadoNormal + totalNormal;
-
+    console.log("Generacion extra: "+nombreMeses[i] +" "+ extra);
     };
 
     //console.log("-----Pago acumulado de: " + totalsumadoNormal);
-    console.log("generacion total part1: " + totalgeneracion);
+    console.log("generacion acumulada part1: " + totalgeneracion);
     console.log("Demanda acumulada part1: " + totaldemanda);
+    
 
 
     //mayo-oct  4 ESCALONES DE TARIFAS
@@ -262,7 +268,7 @@ function energia(event){
 
     var eficiencia = 0.82;
     var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
-    var facturacion = (meses[i])-generacion;
+    var facturacion = (meses[i])-generacion + extra;
     var facturacionNormal = (meses[i]);
     var base =0;
     var interbajo = 0;
@@ -273,6 +279,13 @@ function energia(event){
     var interalto1 = 0;
     var excedente1 = 0;
     
+    //condicional para generacion extra 
+    if (facturacion < 0){
+        extra = extra + (meses[i]-generacion)
+    } else {extra = 0;
+    console.log("no hay extra");}    
+
+
     //facturacion con paneles inicio
     if(facturacion>300){
         var base = 300*tarifaBase[i];
@@ -335,13 +348,13 @@ function energia(event){
     //pagos de cada escalon
     //console.log("base sp:" + base1);
     //console.log("interbajo sp:" +interbajo1);
-    console.log("interalto sp:" +interalto1);
-    console.log("exc sp:" +excedente1);
+    //console.log("interalto sp:" +interalto1);
+    //console.log("exc sp:" +excedente1);
     //console.log("subtotal sp:" +subtotal1);
     //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
     console.log("generacion: "+ generacion);
-    console.log("demanda: "+ meses[i]);
+    console.log("demanda: "+ nombreMeses[i] +" "+ meses[i]);
     //console.log("Pago con paneles: "+ total);
     //console.log("Pago sin paneles: "+ totalNormal);
 
@@ -352,27 +365,34 @@ function energia(event){
     totalsumado2 = totalsumado2 + total;
     facturaNormal.push(totalNormal);
     totalsumado2Normal = totalsumado2Normal + totalNormal;
-    
+    console.log("Generacion extra: "+nombreMeses[i] +" " + extra);
     };
 
     //console.log("-----Pago acumulado de: "+ totalsumado2Normal);
-    console.log("generacion total part2: " + totalgeneracion);
+    console.log("generacion acumulada part2: " + totalgeneracion);
     console.log("Demanda acumulada part2: " + totaldemanda);
+    
 
-
+    console.log("Generacion antes de nov: " + extra);
     //nov-dic 3 ESCALONES DE TARIFAS
     for (i=10 ; i < 12 ; i++ ){
         //console.log("ciclo 3, consumo del mes: "+ meses[i]);
 
     var eficiencia = 0.82;
     var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
-    var facturacion = (meses[i])-generacion;
+    var facturacion = (meses[i])-generacion + extra;
     var facturacionNormal = (meses[i]);
     var base =0;
     var interbajo = 0;
     var interalto = 0;
     var excedente = 0;
     
+        //condicional para generacion extra 
+        if (facturacion < 0){
+            extra = extra + (meses[i]-generacion)
+        } else { extra = 0; 
+            console.log("no hay extra");}
+
     //facturacion con paneles inicio
     if(facturacion>75){
         var base = 75*tarifaBase[i];
@@ -415,13 +435,13 @@ function energia(event){
     
     //pagos de cada escalon
     //console.log("base sp:" + base1);
-    console.log("interbajo sp:" +interbajo1);   
-    console.log("exc sp:" +excedente1);
+    //console.log("interbajo sp:" +interbajo1);   
+    //console.log("exc sp:" +excedente1);
     //console.log("subtotal sp:" +subtotal1);
     //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
     console.log("generacion: "+ generacion);
-    console.log("demanda: "+ meses[i]);
+    console.log("demanda: "+ nombreMeses[i] +" "+ meses[i]);
     //console.log("Pago con paneles: " + total);
     //console.log("Pago sin paneles: " + total);
 
@@ -432,15 +452,19 @@ function energia(event){
     facturaNormal.push(totalNormal);
     totalsumado3 = totalsumado3 + total;
     totalsumado3Normal = totalsumado3Normal + totalNormal;
-    
+    console.log("Generacion extra: "+nombreMeses[i] +" " + extra);
     };
 
     //console.log("-----Pago acumulado de: "+ totalsumado3Normal);
-    console.log("generacion total part3: " + totalgeneracion);
+    console.log("generacion acumulada part3: " + totalgeneracion);
     console.log("Demanda acumulada part3: " + totaldemanda);
 
+
+    //valores para mostrar 
     var conProyecto = (totalsumado + totalsumado2 + totalsumado3);
     var sinProyecto = (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal);
+    var cobertura = ((totalgeneracion/totaldemanda)*100).toFixed(2);
+
     console.log("total sumado: "+ totalsumado);
     console.log("total sumado2: "+ totalsumado2);
     console.log("total sumado3: "+ totalsumado3);
@@ -453,8 +477,7 @@ function energia(event){
     console.log(facturaNormal);
 
     document.getElementById('sinProyecto').innerText= "Pago anual sin paneles: $" + sinProyecto;
-    document.getElementById('conProyecto').innerHTML= "Pago anual con paneles: $" + conProyecto+ "<br><i>Los valores son aproximados</i>";
-    
+    document.getElementById('conProyecto').innerHTML= "Pago anual con paneles: $" + conProyecto+ "<br> Cobertura del sistema: " + cobertura + "%. <br><i>Los valores son aproximados</i>";
 
     //grafica en canvas por JS 
     canvas = document.getElementById("myChart");
