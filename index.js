@@ -2,11 +2,15 @@ const cuestionario = document.getElementById("Calculadora");
 const clean = document.getElementById("limpiar");
 const corrida = document.getElementById("flujo");
 const energetica = document.getElementById("energia");
+const producto = document.getElementById("resultado-productos");
+const respuesta = document.getElementById("productos");
 
 clean.addEventListener("click", limpiar);
 cuestionario.addEventListener("click", candidatos);
 corrida.addEventListener("click", flujoFinanciero);
 energetica.addEventListener("click", energia);
+producto.addEventListener("click", productos);
+respuesta.addEventListener("change", respuestas);
 
 function limpiar(event){
     document.getElementById('Calculadora').reset();
@@ -127,9 +131,10 @@ function candidatos(event){
     //console.log(mensualidad);
     return 0;
 }
-  
+
+
 function energia(event){
-    
+
     const ene = Math.ceil(document.getElementById("dic").value/2);
     const feb = Math.ceil(document.getElementById("feb").value/2);
     const mar = Math.ceil(document.getElementById("feb").value/2);
@@ -144,11 +149,12 @@ function energia(event){
     const dic = Math.ceil(document.getElementById("dic").value/2);
     const kwp = document.getElementById("kwp").value/1000;
 
-    
+
     var meses = [ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic];
     var dias = [31,28,31,30,31,30,31,31,30,31,30,31];
     var hsp = [5.55,6.06,7.13,7.08,7.11,6.69,6.02,5.83,5.85,6.38,5.79,5.23];
 
+    //Actualizar las tarifas para el año que acaba de pasar. Ej. 2023 en el 2024
     var tarifaBase = [0.882,0.887,0.892,0.897,0.669,0.673,0.677,0.681,0.685,0.689,0.933,0.939];
     var tarifaInterbajo = [1.073,1.079,1.085,1.091,0.835,0.84,0.845,0.85,0.855,0.86,1.139,1.146];
     var tarifaInteralto = [0,0,0,0,2.032,2.044,2.056,2.068,2.08,2.092,0,0];
@@ -166,7 +172,7 @@ function energia(event){
     var totalsumado3Normal = 0;
 
     var totalgeneracion = 0;
-    var totaldemanda = 0;
+    let totaldemanda = 0;
 
     var extra = 0;
 
@@ -187,13 +193,13 @@ function energia(event){
         var interalto1 = 0;
         var excedente1 = 0;
 
-        //condicional para generacion extra 
+        //condicional para generacion extra
         if (facturacion < 0){
             extra = extra + (meses[i]-generacion)
-        } else {extra = 0; 
+        } else {extra = 0;
             console.log("no hay extra");}
 
-    
+
         //facturacion con paneles inicio
         if(facturacion>75){
             var base = 75*tarifaBase[i];
@@ -245,7 +251,7 @@ function energia(event){
     console.log("demanda: "+ nombreMeses[i]+" "+ meses[i]);
     //console.log("Pago con paneles: "+ total);
     //console.log("Pago sin paneles: "+ totalNormal);
-    
+
     totalgeneracion = totalgeneracion + generacion;
     totaldemanda = totaldemanda + meses[i];
 
@@ -259,7 +265,7 @@ function energia(event){
     //console.log("-----Pago acumulado de: " + totalsumadoNormal);
     console.log("generacion acumulada part1: " + totalgeneracion);
     console.log("Demanda acumulada part1: " + totaldemanda);
-    
+
 
 
     //mayo-oct  4 ESCALONES DE TARIFAS
@@ -278,12 +284,12 @@ function energia(event){
     var interbajo1 = 0;
     var interalto1 = 0;
     var excedente1 = 0;
-    
-    //condicional para generacion extra 
+
+    //condicional para generacion extra
     if (facturacion < 0){
         extra = extra + (meses[i]-generacion)
     } else {extra = 0;
-    console.log("no hay extra");}    
+    console.log("no hay extra");}
 
 
     //facturacion con paneles inicio
@@ -314,7 +320,7 @@ function energia(event){
     var subtotal = base + interbajo + interalto + excedente;
     var total = Math.round(subtotal*1.16);
     //facturacion con paneles fin
-    
+
     //facturacion normal inicio, el problema esta en excedentes
     if(facturacionNormal>300){
         var base1 = 300*tarifaBase[i];
@@ -371,7 +377,7 @@ function energia(event){
     //console.log("-----Pago acumulado de: "+ totalsumado2Normal);
     console.log("generacion acumulada part2: " + totalgeneracion);
     console.log("Demanda acumulada part2: " + totaldemanda);
-    
+
 
     console.log("Generacion antes de nov: " + extra);
     //nov-dic 3 ESCALONES DE TARIFAS
@@ -386,11 +392,11 @@ function energia(event){
     var interbajo = 0;
     var interalto = 0;
     var excedente = 0;
-    
-        //condicional para generacion extra 
+
+        //condicional para generacion extra
         if (facturacion < 0){
             extra = extra + (meses[i]-generacion)
-        } else { extra = 0; 
+        } else { extra = 0;
             console.log("no hay extra");}
 
     //facturacion con paneles inicio
@@ -432,10 +438,10 @@ function energia(event){
     var subtotal1 = base1 + interbajo1 + excedente1;
     var totalNormal = Math.round(subtotal1*1.16);
     //facturacion normal fin
-    
+
     //pagos de cada escalon
     //console.log("base sp:" + base1);
-    //console.log("interbajo sp:" +interbajo1);   
+    //console.log("interbajo sp:" +interbajo1);
     //console.log("exc sp:" +excedente1);
     //console.log("subtotal sp:" +subtotal1);
     //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
@@ -460,7 +466,7 @@ function energia(event){
     console.log("Demanda acumulada part3: " + totaldemanda);
 
 
-    //valores para mostrar 
+    //valores para mostrar
     var conProyecto = (totalsumado + totalsumado2 + totalsumado3);
     var sinProyecto = (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal);
     var cobertura = ((totalgeneracion/totaldemanda)*100).toFixed(2);
@@ -476,21 +482,19 @@ function energia(event){
     console.log("total sumadoGLOBAL sin paneles: "+ (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal) );
     console.log(facturaNormal);
 
-    document.getElementById('sinProyecto').innerText= "Pago anual sin paneles: $" + sinProyecto;
-    document.getElementById('conProyecto').innerHTML= "Pago anual con paneles: $" + conProyecto+ "<br> Cobertura del sistema: " + cobertura + "%. <br><i>Los valores son aproximados</i>";
+    document.getElementById('sinProyecto').innerText= "Pago sin paneles: $" + sinProyecto;
+    document.getElementById('conProyecto').innerHTML= "Pago con paneles: $" + conProyecto+ "<br> Energía que deja de pagar (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Cobertura de ahorro: " + cobertura + "% <br> <i>Los valores son anuales. </i>";
 
-    //grafica en canvas por JS 
-    canvas = document.getElementById("myChart");
-    ctx= canvas.getContext("2d");
+    //grafica en canvas por JS
+
     const names = nombreMeses;
     const facturaGrafica = factura;
     const facturaNormalGrafica = facturaNormal;
-
+    //color de las letras en el Chart
     Chart.defaults.color= "black";
 
-    var myChart =  new Chart(ctx,{
-    type: 'bar',
-    data: {
+    //informacion
+    let data = {
         labels: names,
         datasets: [{
             label: 'Pago mensual con paneles',
@@ -521,7 +525,7 @@ function energia(event){
                 'rgba(247,99,0,1)',
                 'rgba(247,99,0,1)',
                 'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)'  
+                'rgba(247,99,0,1)'
             ],
             borderWidth: 2,
             hoverBackgroundColor:'rgba(247,99,0,1)',
@@ -556,26 +560,37 @@ function energia(event){
                 'rgba(83,97,109,1)',
                 'rgba(83,97,109,1)',
                 'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)'  
+                'rgba(83,97,109,1)'
             ],
             borderWidth: 2,
             hoverBackgroundColor:'rgba(83,97,109,1)',
             hoverBorderWidth: 0,
         }
     ]
-    },
-    options: {
-        responsive: true,
-        tooltips: {
-            callbacks: {
-                label: function (tooltipItem, data) {
-                    var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]
-                    return parseFloat(tooltipValue).toLocaleString();
+    }
+
+    //configuracion del canvas
+    let config = {
+        type: 'bar',
+        data,
+        options: {
+            responsive: true,
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]
+                        return parseFloat(tooltipValue).toLocaleString();
+                    }
                 }
             }
         }
     }
-})
+
+    //init canvas (render)
+    let myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
 }
 
 function flujoFinanciero(event){
@@ -741,4 +756,39 @@ function flujoFinanciero(event){
     var advertencia = "La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%."
     document.getElementById('ad').insertAdjacentText("beforeend", advertencia)    
 }
-    
+
+function productos(){
+    var potencia = document.getElementById('potencia').value;
+    var horas = document.getElementById('horas').value;
+    var semanas = document.getElementById('semanas').value;
+    const semananasEnElAnio = 52.12
+
+    var resultado = (potencia*horas*semanas*semananasEnElAnio)
+
+    document.getElementById('resultado-producto').innerText= "Consumo: " +(resultado/1000).toFixed(2) + " kWh al año"
+}
+
+function eco(){
+    var demanda = document.getElementById('energia-pagar').value;
+    var potencia = document.getElementById('potencia').value;
+    var horas = document.getElementById('horas').value;
+    var semanas = document.getElementById('semanas').value;
+    const semananasEnElAnio = 52.12
+    var potenciaEcologica = (potencia*0.80);
+
+    var ahorro = 0
+    var consumoProducto = ((potencia*horas*semanas*semananasEnElAnio)/1000).toFixed(2);
+    var consumoEficiente = ((potenciaEcologica*horas*semanas*semananasEnElAnio)/1000).toFixed(2);
+    ahorro = (consumoProducto - consumoEficiente).toFixed(2);
+    document.getElementById('eco').innerHTML= "Energía que deja de pagar (kWh): " + ahorro + "<br> Cobertura de ahorro: " + ((ahorro/demanda)*100).toFixed(2) + "%";
+    return 0;
+}
+
+function respuestas(event){
+    console.log("Ha cambiado.")
+}
+
+
+
+//pendiente analizar canvas dinamico
+//pendiente elegir los valores de lista en etiqueta Select en html 

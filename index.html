@@ -11,8 +11,8 @@
 </head>
 <body>
     <nav class="nav">
-    <div class="titulo">
-    Simulador de paneles solares
+    <div>
+        Simulador de paneles solares
     </div>
     </nav>
     <form method="get" class="form-primero">
@@ -64,17 +64,17 @@
             <label>Periodo 07 DIC al 03 FEB 22</label>
             <input type="number" id="dic" placeholder="0" value="1052"><br>
             <button type="button" id="energia">Evaluar</button><br>
-            <label id="sinProyecto"></label><br>
-            <label id="conProyecto"></label>
-            </div>
-        </form>
+            <label id="sinProyecto" ></label><br >
+            <label id="conProyecto" ></label>
+        </div>
+    </form>
             <section class="section-chart">
-                <canvas id="myChart" class="myChart" height=50vh width="300px" ></canvas>
+                <canvas id="myChart" class="myChart hidden" height=50vh width="300px" ></canvas>
             </section>
     <form  method="get" class="form-tercero">
         <label id="corrida-f">Corrida financiera</label><br>
         <button type="button" id="flujo">Mostrar</button><br>
-        <div class="section-f3">
+        <div class="section-f3 hidden">
                 <p class="col1" id="col1"></p>
                 <p class="col1" id="col2"></p>
                 <p class="col1" id="col3"></p>
@@ -83,11 +83,62 @@
             </div>
             <label ><i id="ad"></i></label>
         </form>
+        <nav class="nav2">
+            <div class="titulo">
+            Equipos ahorradores
+            </div>
+        </nav>
+        <form method="get" class="form-cuarto">
+            <div class="section-f4">
+                <label> <h3>Paso 1 de 2</h3><h4>Calculamos su consumo anual</h4></label>
+                <label > Elija un producto de su hogar que desea comparar con uno mas eficiente. </label><br>
+                <select class="espacios" name="productos" id="productos" title="Selecciona una opción" inputmode="">
+                    <option class="productos" value="refrigerador">Refrigerador</option>
+                    <option class="productos" value="lavadora">Lavadora</option>
+                    <option class="productos" value="miniSplit">Mini Split</option>
+                </select><br>
+                <div class="espacios">
+                    <label > ¿Cuál es la potencia del equipo?</label><br>
+                    <input class="espacios" type="number" step="any" id="potencia" placeholder="650" title="En Watts "><br>
+                </div>
+                <div class="espacios">
+                    <label > ¿Cuántas horas al dia se usa? </label><br>
+                    <input class="espacios" type="number" step="any" id="horas" min="0" max="24" placeholder="17" ><br>
+                </div>
+                <div class="espacios">
+                    <label > ¿Cuántos dias a la semana se usa? </label><br>
+                    <input class="espacios" type="number" id="semanas"   placeholder="0" ><br>
+                </div>
+                <div class="espacios">
+                    <button type="button" id="resultado-productos">Calcular</button><br> <!--forzamos el ultimo boton del formulario de submit a button para que se mantengan visibles los resultados-->
+                    <label class="espacios"></label>
+                    <label type="text" id="resultado-producto"></label><br>
+                </div>
+                <label> <h3>Paso 2 de 2</h3><h4>Calculamos los ahorros</h4></label>
+                <div class="espacios">
+                    <label > ¿Cuánta energía paga? en kWh</label><br>
+                    <input class="espacios" type="number" step="any" id="energia-pagar" placeholder="3000" title="Viene en la simulacion de paneles"><br>
+                </div>
+                <div class="espacios">
+                    <label  title="Debe ser del mismo tipo de producto"> ¿Cuál producto desea comparar? </label><br>
+                    <select name="produtosEcologicos" id="productosEcologicos">
+                        <option value="refrigeradorEficiente">Refrigerador inverter</option>
+                        <option value="lavadoraEficiente">Lavadora ecológica</option>
+                        <option value="miniSplitEficiente">Mini Split Inverter</option>
+                    </select><br>
+                </div>
+                <div class="espacios">
+                    <button type="button" onclick="eco()"> Calcular</button><br> <!--forzamos el ultimo boton del formulario de submit a button para que se mantengan visibles los resultados-->
+                    <label class="espacios"></label>
+                    <label type="text" id="eco"> </label><br>
+                </div>
+            </div>
+        </form>
     <footer class="footer">
-        Derechos reservados Grupo Coppel ® 
+        Derechos reservados Grupo Coppel ®
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.3/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="/index.js"></script>
-    
+
 </body>
 </html>
