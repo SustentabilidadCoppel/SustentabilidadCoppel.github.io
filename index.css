@@ -137,7 +137,6 @@ body {
     text-align:-webkit-center;
     padding-bottom: 10px;
     padding-top: 50px;
-    viewport-fit:cover;
 }
 
 .section-f4{
@@ -168,7 +167,7 @@ h4{
     top: 0;
     margin:0px;
     color: white;
-    padding: 12px;
+    padding: 12px 0px 12px 0px;
     text-align: left;
     font-family: 'Lora';
     font-size: 40px;
