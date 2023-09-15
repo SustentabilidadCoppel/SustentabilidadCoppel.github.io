@@ -60,7 +60,7 @@ body {
 .section-f2{
 
     width:fit-content;
-    max-width: 300px;
+    max-width: 500px;
     border-style: solid;
     border-width: 10px;
     border-color: rgba(242, 238, 229, 0);
@@ -69,6 +69,11 @@ body {
     background-color: rgba(242, 238, 229, 0.751);
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
+}
+
+.mes{
+    text-align: center;
+    width: 80px;
 }
 
 #sinProyecto{

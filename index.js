@@ -135,18 +135,18 @@ function candidatos(event){
 
 function energia(event){
 
-    const ene = Math.ceil(document.getElementById("dic").value/2);
-    const feb = Math.ceil(document.getElementById("feb").value/2);
-    const mar = Math.ceil(document.getElementById("feb").value/2);
-    const abr = Math.ceil(document.getElementById("abr").value/2);
-    const may = Math.ceil(document.getElementById("abr").value/2);
-    const jun = Math.ceil(document.getElementById("jun").value/2);
-    const jul = Math.ceil(document.getElementById("jun").value/2);
-    const ago = Math.ceil(document.getElementById("ago").value/2);
-    const sep = Math.ceil(document.getElementById("ago").value/2);
-    const oct = Math.ceil(document.getElementById("oct").value/2);
-    const nov = Math.ceil(document.getElementById("oct").value/2);
-    const dic = Math.ceil(document.getElementById("dic").value/2);
+    const ene = Math.ceil(document.getElementById("ene").value);
+    const feb = Math.ceil(document.getElementById("feb").value);
+    const mar = Math.ceil(document.getElementById("mar").value);
+    const abr = Math.ceil(document.getElementById("abr").value);
+    const may = Math.ceil(document.getElementById("may").value);
+    const jun = Math.ceil(document.getElementById("jun").value);
+    const jul = Math.ceil(document.getElementById("jul").value);
+    const ago = Math.ceil(document.getElementById("ago").value);
+    const sep = Math.ceil(document.getElementById("sep").value);
+    const oct = Math.ceil(document.getElementById("oct").value);
+    const nov = Math.ceil(document.getElementById("nov").value);
+    const dic = Math.ceil(document.getElementById("dic").value);
     const kwp = document.getElementById("kwp").value/1000;
 
 
@@ -470,6 +470,7 @@ function energia(event){
     var conProyecto = (totalsumado + totalsumado2 + totalsumado3);
     var sinProyecto = (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal);
     var cobertura = ((totalgeneracion/totaldemanda)*100).toFixed(2);
+    var coberturaEconomica = ((1-(conProyecto/sinProyecto))*100).toFixed(2);
 
     console.log("total sumado: "+ totalsumado);
     console.log("total sumado2: "+ totalsumado2);
@@ -483,7 +484,7 @@ function energia(event){
     console.log(facturaNormal);
 
     document.getElementById('sinProyecto').innerText= "Pago sin paneles: $" + sinProyecto;
-    document.getElementById('conProyecto').innerHTML= "Pago con paneles: $" + conProyecto+ "<br> Energía que deja de pagar (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Cobertura de ahorro: " + cobertura + "% <br> <i>Los valores son anuales. </i>";
+    document.getElementById('conProyecto').innerHTML= "Pago con paneles: $" + conProyecto+ "<br> Energía que deja de pagar (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Ahorro energético: " + cobertura + "% <br> Ahorro economico "+ coberturaEconomica +"%<br> <i>Los valores son anuales. </i>";
 
     //grafica en canvas por JS
 
@@ -753,8 +754,8 @@ function flujoFinanciero(event){
                     }else mensualidad=mensualidad
             }else mensualidad = mensualidad
         }
-    var advertencia = "La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%."
-    document.getElementById('ad').insertAdjacentText("beforeend", advertencia)    
+    var advertencia = "La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%.<br> Deuda: Es la diferencia entre el fondo de ahorro de la empresa y trabajador. <br> FRE y FRT: Son el fondo de ahorro de empresa y trabajador. <br> Pagos: Son los pagos acumulados."
+    document.getElementById('ad').insertAdjacentHTML("beforeend", advertencia)    
 }
 
 function productos(){

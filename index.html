@@ -51,19 +51,31 @@
         </form>
         <form id="vida" method="get" class="form-segundo" >
             <div  class="section-f2" >
-            <label>Ingresa tu consumo bimestral del año 2022.</label><br>
-            <label>Periodo 05 OCT al 06 DIC 22</label>
-            <input type="number" id="oct" placeholder="0" value=""><br>
-            <label>Periodo 04 AGO al 05 OCT 22</label>
-            <input type="number" id="ago" placeholder="0" value=""><br>
-            <label>Periodo 07 JUN al 04 AGO 22</label>
-            <input type="number" id="jun" placeholder="0" value=""><br>
-            <label>Periodo 05 ABR al 07 JUN 22</label>
-            <input type="number" id="abr" placeholder="0" value=""><br>
-            <label>Periodo 03 FEB al 05 ABR 22</label>
-            <input type="number" id="feb" placeholder="0" value=""><br>
-            <label>Periodo 07 DIC al 03 FEB 22</label>
-            <input type="number" id="dic" placeholder="0" value=""><br>
+            <label>Ingresa tu consumo del año 2022.</label><br>
+            <label>Ene</label>
+            <input class="mes" type="number" id="ene" placeholder="0" value=""><br>
+            <label>Feb</label>
+            <input class="mes" type="number" id="feb" placeholder="0" value=""><br>
+            <label>Mar</label>
+            <input class="mes" type="number" id="mar" placeholder="0" value=""><br>
+            <label>Abr</label>
+            <input class="mes" type="number" id="abr" placeholder="0" value=""><br>
+            <label>May</label>
+            <input class="mes" type="number" id="may" placeholder="0" value=""><br>
+            <label>Jun</label>
+            <input class="mes" type="number" id="jun" placeholder="0" value=""><br>
+            <label>Jul</label>
+            <input class="mes" type="number" id="jul" placeholder="0" value=""><br>
+            <label>Ago</label>
+            <input class="mes" type="number" id="ago" placeholder="0" value=""><br>
+            <label>Sep</label>
+            <input class="mes" type="number" id="sep" placeholder="0" value=""><br>
+            <label>Oct</label>
+            <input class="mes" type="number" id="oct" placeholder="0" value=""><br>
+            <label>Nov</label>
+            <input class="mes" type="number" id="nov" placeholder="0" value=""><br>
+            <label>Dic</label>
+            <input class="mes" type="number" id="dic" placeholder="0" value=""><br>
             <button type="button" id="energia">Evaluar</button><br>
             <label id="sinProyecto" ></label><br >
             <label id="conProyecto" ></label>
@@ -100,15 +112,15 @@
                 </select><br>
                 <div class="espacios">
                     <label > ¿Cuál es la potencia del equipo?</label><br>
-                    <input class="espacios" type="number" step="any" id="potencia" placeholder="650" title="En Watts "><br>
+                    <input class="espacios" type="number" step="any" id="potencia" placeholder="Potencia..." title="En Watts "><br>
                 </div>
                 <div class="espacios">
                     <label > ¿Cuántas horas al dia se usa? </label><br>
-                    <input class="espacios" type="number" step="any" id="horas" min="0" max="24" placeholder="17" ><br>
+                    <input class="espacios" type="number" step="any" id="horas" min="0" max="24" placeholder="Horas..." ><br>
                 </div>
                 <div class="espacios">
                     <label > ¿Cuántos dias a la semana se usa? </label><br>
-                    <input class="espacios" type="number" id="semanas"   placeholder="0" ><br>
+                    <input class="espacios" type="number" id="semanas"   placeholder="Días de uso..." ><br>
                 </div>
                 <div class="espacios">
                     <button type="button" id="resultado-productos">Calcular</button><br> <!--forzamos el ultimo boton del formulario de submit a button para que se mantengan visibles los resultados-->
@@ -118,7 +130,7 @@
                 <label> <h3>Paso 2 de 2</h3><h4>Calculamos los ahorros</h4></label>
                 <div class="espacios">
                     <label > ¿Cuánta energía paga? en kWh</label><br>
-                    <input class="espacios" type="number" step="any" id="energia-pagar" placeholder="3000" title="Viene en la simulacion de paneles"><br>
+                    <input class="espacios" type="number" step="any" id="energia-pagar" placeholder="Energía..." title="Viene en la simulacion de paneles"><br>
                 </div>
                 <div class="espacios">
                     <label  title="Debe ser del mismo tipo de producto"> ¿Cuál producto desea comparar? </label><br>
