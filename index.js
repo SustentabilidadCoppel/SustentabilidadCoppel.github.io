@@ -19,7 +19,7 @@ function limpiar(event){
 function candidatos(event){
     //console.log({event}); para detener el reset es preventDefault.
     //event.preventDefault();
-    
+
     const nombre = document.getElementById('nombre').value;
     const FDE = parseFloat(document.getElementById('FDE').value);
     const FDT = parseFloat(document.getElementById('FDT').value);
@@ -34,13 +34,13 @@ function candidatos(event){
     const directivo = document.getElementById('directivo');
     const FDTT = FDT - CC - autocop;
     let sfv = (kwp*dolar*1.2)*1.16;
-    //var antiguedad = document.getElementById('fecha'); //por definir 
+    //var antiguedad = document.getElementById('fecha'); //por definir
     //let mes = antiguedad.getMonth(); //por definir
-   
+
     //fecha de ingreso
     const anio = parseInt(String(fecha).substring(0,4));
     const mes = parseInt(String(fecha).substring(5,7));
-    
+
     //fecha en vida real
     let date = new Date();
     let yyyy = parseInt(date.getFullYear());
@@ -78,7 +78,30 @@ function candidatos(event){
 
     console.log(rendimientos);
 
+    //Calculo de la prima seguros HDI
+    var prima = sfv*0.014;
 
+    if (prima < 1000){
+        var prima = 1000;
+    };
+
+    if (prima>= 0 & prima <=1000){
+        var gasto = 150;
+    }else if (prima>=1000.01 & prima <= 2500 ){
+        var gasto = 270;
+    }else if (prima>=2500.01 & prima <= 10000 ){
+        var gasto = 500;
+    }else if (prima>=10000.01 & prima <= 50000 ){
+        var gasto = 660;
+    }else if (prima>=50000.01 ){
+        var gasto = 900;
+    }
+
+    prima = (prima+gasto)*1.16;
+    console.log("PRIMOOOOOOOOOO: " + prima);
+
+    // fin calculo de prima HDI
+    /*
     if (sfv>= 0 & sfv <=25053){
         var prima = 696;
     }else if (sfv>=25053.1 & sfv <= 37759 ){
@@ -99,28 +122,28 @@ function candidatos(event){
         var prima = 1481.76;
     } else alert("Ingresa un valor correcto");
     //console.log("prima es:" + prima);
-
+    */
     let subprestamo = sfv;
     //console.log("subprestamo es: " + subprestamo);
     var mensualidad = 0;
-    
+
     if ((0.05*bruto)>(prestamos*subprestamo)){
         mensualidad = (0.05*bruto);
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
         var prestamo = (subprestamo+(prima*periodo))*0.9;
         var credito = Math.round((prestamo/mensualidad)*1.1);
-        
+
     } else var mensualidad = subprestamo*prestamos;
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
         var prestamo = (subprestamo+(prima*periodo))*0.9;
         var credito = Math.round((prestamo/mensualidad)*1.1);
-        //console.log("prestamo total: "+prestamo);
+        console.log("prima total: "+prima*periodo);
 
     //console.log("periodo en años es: "+periodo);
     //console.log("periodo en primas es: "+periodo*prima);
-    
+
     if (FDTT >= prestamo){
         const subtotal=neto-mensualidad;
         if ((subtotal) > (bruto*0.4)){
@@ -656,7 +679,29 @@ function flujoFinanciero(event){
     
         console.log(rendimientos);
     
-    
+        //calculo de prima HDI
+        var prima = sfv*0.014;
+
+        if (prima < 1000){
+        var prima = 1000;
+        };
+
+        if (prima>= 0 & prima <=1000){
+            var gasto = 150;
+        }else if (prima>=1000.01 & prima <= 2500 ){
+            var gasto = 270;
+        }else if (prima>=2500.01 & prima <= 10000 ){
+            var gasto = 500;
+        }else if (prima>=10000.01 & prima <= 50000 ){
+            var gasto = 660;
+        }else if (prima>=50000.01 ){
+            var gasto = 900;
+        }
+
+        prima = (prima+gasto)*1.16;
+
+        //fin calculo de prima HDI
+        /*
         if (sfv>= 0 & sfv <=25053){
             var prima = 696;
         }else if (sfv>=25053.1 & sfv <= 37759 ){
@@ -677,6 +722,7 @@ function flujoFinanciero(event){
             var prima = 1481.76;
         } else alert("Ingresa un valor correcto");
         //console.log("prima es:" + prima);
+        */
     
         let subprestamo = sfv;
         //console.log("subprestamo es: " + subprestamo);
@@ -712,11 +758,31 @@ function flujoFinanciero(event){
             console.log("mes "+ m + ": deuda: "+ i.toFixed(2) +" FDE:"+FDE.toFixed(2)+" FDT:"+ FDT.toFixed(2) + " Pagos: " +pagos.toFixed(2))
             //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
             col1 = "Mes "+ m +":" + "<br>"
-            col2 = "Deuda: "+ i.toFixed(2)+ "<br>"
-            col3 = "FRE: "+FDE.toFixed(2)+ "<br>"
-            col4 = "FRT: "+ FDT.toFixed(2)+ "<br>"
-            col5 = "Pagos: " +pagos.toFixed(2)+ "<br>"
-    
+            var numb2= i.toFixed(0);
+            var str2 = numb2.toString().split(".");
+            str2[0] = str2[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            str2.join(".");
+            col2 = "Deuda: $"+ str2+ "<br>"
+
+            var numb3= FDE.toFixed(0);
+            var str3 = numb3.toString().split(".");
+            str3[0] = str3[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            str3.join(".");
+            col3 = "FRE: $"+str3+ "<br>"
+
+            var numb4= FDT.toFixed(0);
+            var str4 = numb4.toString().split(".");
+            str4[0] = str4[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            str4.join(".");
+            col4 = "FRT: $"+ str4+ "<br>"
+
+            var numb5= pagos.toFixed(0);
+            var str5 = numb5.toString().split(".");
+            str5[0] = str5[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            str5.join(".");
+            //col5 = "Pagos: $" +pagos.toFixed(0)+ "<br>"
+            col5 = "Pagos: $" + str5 + "<br>"
+
             document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
             document.getElementById('col2').insertAdjacentHTML("beforeend",col2)
             document.getElementById('col3').insertAdjacentHTML("beforeend",col3)
@@ -724,7 +790,7 @@ function flujoFinanciero(event){
             document.getElementById('col5').insertAdjacentHTML("beforeend",col5)
             //document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
             m= m+1
-            
+
             pagos = pagos + mensualidad
             FDT = FDT  + mensualidad + ((cetes*FDT)/12) + (bruto*rendimientos)
             FDE = FDE + ((cetes*FDE)/12) + (bruto*rendimientos)
@@ -734,18 +800,38 @@ function flujoFinanciero(event){
                     if (i<mensualidad){
                         console.log("final 2")
 
-                        mensualidad = i 
+                        mensualidad = i
                         pagos = pagos + mensualidad
                         FDT = FDT  + mensualidad + ((cetes*FDT)/12) + (bruto*rendimientos)
                         FDE = FDE + ((cetes*FDE)/12) + (bruto*rendimientos)
                         //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
                         //document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
                         col1 = " Mes "+ m +": " + "<br>"
-                        col2 = " Deuda: "+ i.toFixed(2)+ "<br>"
-                        col3 = " FRE: "+FDE.toFixed(2)+ "<br>"
-                        col4 = " FRT: "+ FDT.toFixed(2)+ "<br>"
-                        col5 = " Pagos: " +pagos.toFixed(2)+ "<br>"
-    
+                        var numb2= i.toFixed(0);
+                        var str2 = numb2.toString().split(".");
+                        str2[0] = str2[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        str2.join(".");
+                        col2 = "Deuda: $"+ str2+ "<br>"
+
+                        var numb3= FDE.toFixed(0);
+                        var str3 = numb3.toString().split(".");
+                        str3[0] = str3[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        str3.join(".");
+                        col3 = "FRE: $"+str3+ "<br>"
+
+                        var numb4= FDT.toFixed(0);
+                        var str4 = numb4.toString().split(".");
+                        str4[0] = str4[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        str4.join(".");
+                        col4 = "FRT: $"+ str4+ "<br>"
+
+                        var numb5= pagos.toFixed(0);
+                        var str5 = numb5.toString().split(".");
+                        str5[0] = str5[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        str5.join(".");
+                        //col5 = "Pagos: $" +pagos.toFixed(0)+ "<br>"
+                        col5 = "Pagos: $" + str5 + "<br>"
+
                         document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
                         document.getElementById('col2').insertAdjacentHTML("beforeend",col2)
                         document.getElementById('col3').insertAdjacentHTML("beforeend",col3)
@@ -754,8 +840,8 @@ function flujoFinanciero(event){
                     }else mensualidad=mensualidad
             }else mensualidad = mensualidad
         }
-    var advertencia = "La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%.<br> Deuda: Es la diferencia entre el fondo de ahorro de la empresa y trabajador. <br> FRE y FRT: Son el fondo de ahorro de empresa y trabajador. <br> Pagos: Son los pagos acumulados."
-    document.getElementById('ad').insertAdjacentHTML("beforeend", advertencia)    
+    var advertencia = "La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%.<br> Deuda: Es la diferencia entre el fondo de ahorro de la empresa y trabajador. <br> FRE y FRT: Son el fondo de ahorro de empresa y trabajador. <br> Pagos: Son los pagos acumulados. <br> Los datos mostrados son solo una simulación y esto no asegura los mismos resultados."
+    document.getElementById('ad').insertAdjacentHTML("beforeend", advertencia)
 }
 
 function productos(){
