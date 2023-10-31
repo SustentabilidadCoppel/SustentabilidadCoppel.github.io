@@ -131,7 +131,7 @@ function candidatos(event){
         mensualidad = (0.05*bruto);
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
-        var prestamo = (subprestamo+(prima*periodo))*0.9;
+        var prestamo = (subprestamo+(prima*periodo))*0.9; //es 0.9 porque es el 90% que se saca del fondo de ahorro, el 10% es de su bolsillo
         var credito = Math.round((prestamo/mensualidad)*1.1);
 
     } else var mensualidad = subprestamo*prestamos;
@@ -415,6 +415,10 @@ function energia(event){
     var interbajo = 0;
     var interalto = 0;
     var excedente = 0;
+    var base1 =0;
+    var interbajo1 = 0;
+    var interalto1 = 0;
+    var excedente1 = 0;
 
         //condicional para generacion extra
         if (facturacion < 0){
@@ -481,7 +485,7 @@ function energia(event){
     facturaNormal.push(totalNormal);
     totalsumado3 = totalsumado3 + total;
     totalsumado3Normal = totalsumado3Normal + totalNormal;
-    console.log("Generacion extra: "+nombreMeses[i] +" " + extra);
+    console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
 
     //console.log("-----Pago acumulado de: "+ totalsumado3Normal);
