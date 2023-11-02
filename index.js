@@ -9,6 +9,7 @@ clean.addEventListener("click", limpiar);
 cuestionario.addEventListener("click", candidatos);
 corrida.addEventListener("click", flujoFinanciero);
 energetica.addEventListener("click", energia);
+energetica.addEventListener("click", render);
 producto.addEventListener("click", productos);
 respuesta.addEventListener("change", respuestas);
 
@@ -155,6 +156,8 @@ function candidatos(event){
     return 0;
 }
 
+var factura = [];
+var facturaNormal = [];
 
 function energia(event){
 
@@ -182,9 +185,8 @@ function energia(event){
     var tarifaInterbajo = [1.073,1.079,1.085,1.091,0.835,0.84,0.845,0.85,0.855,0.86,1.139,1.146];
     var tarifaInteralto = [0,0,0,0,2.032,2.044,2.056,2.068,2.08,2.092,0,0];
     var tarifaExcedente = [3.134,3.153,3.172,3.191,3.210,3.229,3.248,3.267,3.286,3.306,3.326,3.346];
-    var factura = [];
-    var facturaNormal = [];
-    var nombreMeses =["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre", "Noviembre","Diciembre"];
+    //var factura = [];
+    //var facturaNormal = [];
 
     var totalsumado = 0;
     var totalsumado2 = 0;
@@ -278,8 +280,10 @@ function energia(event){
     totalgeneracion = totalgeneracion + generacion;
     totaldemanda = totaldemanda + meses[i];
 
-    factura.push(total);
-    facturaNormal.push(totalNormal);
+    factura.splice(i,1,total);
+    //factura.push(total);
+    facturaNormal.splice(i,1,totalNormal);
+    //facturaNormal.push(totalNormal);
     totalsumado = totalsumado + total;
     totalsumadoNormal = totalsumadoNormal + totalNormal;
     console.log("Generacion extra: "+nombreMeses[i] +" "+ extra);
@@ -390,9 +394,11 @@ function energia(event){
     totalgeneracion = totalgeneracion + generacion;
     totaldemanda = totaldemanda + meses[i];
 
-    factura.push(total);
+    factura.splice(i,1,total);
+    //factura.push(total);
     totalsumado2 = totalsumado2 + total;
-    facturaNormal.push(totalNormal);
+    facturaNormal.splice(i,1,totalNormal);
+    //facturaNormal.push(totalNormal);
     totalsumado2Normal = totalsumado2Normal + totalNormal;
     console.log("Generacion extra: "+nombreMeses[i] +" " + extra);
     };
@@ -481,8 +487,10 @@ function energia(event){
     totalgeneracion = totalgeneracion + generacion;
     totaldemanda = totaldemanda + meses[i];
 
-    factura.push(total);
-    facturaNormal.push(totalNormal);
+    factura.splice(i,1,total);
+    //factura.push(total);
+    facturaNormal.splice(i,1,totalNormal);
+    //facturaNormal.push(totalNormal);
     totalsumado3 = totalsumado3 + total;
     totalsumado3Normal = totalsumado3Normal + totalNormal;
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
@@ -512,12 +520,12 @@ function energia(event){
 
     document.getElementById('sinProyecto').innerText= "Pago sin paneles: $" + sinProyecto;
     document.getElementById('conProyecto').innerHTML= "Pago con paneles: $" + conProyecto+ "<br> Energía que deja de pagar (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Ahorro energético: " + cobertura + "% <br> Ahorro economico "+ coberturaEconomica +"%<br> <i>Los valores son anuales. </i>";
-
+}
     //grafica en canvas por JS
-
-    const names = nombreMeses;
-    const facturaGrafica = factura;
-    const facturaNormalGrafica = facturaNormal;
+    var nombreMeses =["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre", "Noviembre","Diciembre"];
+    var names = nombreMeses;
+    var facturaGrafica = factura;
+    var facturaNormalGrafica = facturaNormal;
     //color de las letras en el Chart
     Chart.defaults.color= "black";
 
@@ -615,11 +623,22 @@ function energia(event){
     }
 
     //init canvas (render)
-    let myChart = new Chart(
+    //myChart.destroy();
+    myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+//}
+
+function render(){
+    console.log("valor de facturas: " + factura);
+    myChart.destroy();
+    myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
 }
+
 
 function flujoFinanciero(event){
         document.getElementById('flujo').remove('flujo');
@@ -876,10 +895,7 @@ function eco(){
 }
 
 function respuestas(event){
-    console.log("Ha cambiado.")
+    console.log(respuesta.value + "Ha cambiado.")
 }
 
-
-
-//pendiente analizar canvas dinamico
 //pendiente elegir los valores de lista en etiqueta Select en html 

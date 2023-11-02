@@ -200,9 +200,7 @@ button{
 button:hover {
     box-shadow: 0 6px 16px 0 rgba(0,0,0,0.24);
     background-color: rgb(40, 35, 179);
-    padding:  10px 20px ;
     transition: 0.3s;
-    border-radius: 7px;
 }
 
 
