@@ -99,7 +99,7 @@ function candidatos(event){
     }
 
     prima = (prima+gasto)*1.16;
-    console.log("PRIMOOOOOOOOOO: " + prima);
+    console.log("PRIMO: " + prima);
 
     // fin calculo de prima HDI
     /*
@@ -641,7 +641,7 @@ function render(){
 
 
 function flujoFinanciero(event){
-        document.getElementById('flujo').remove('flujo');
+        //document.getElementById('flujo').remove('flujo');
         var nombre = document.getElementById('nombre').value;
         var FDE = parseFloat(document.getElementById('FDE').value);
         var FDT = parseFloat(document.getElementById('FDT').value);
@@ -660,26 +660,26 @@ function flujoFinanciero(event){
         let sfv = (kwp*dolar*1.2)*1.16;
         //var antiguedad = document.getElementById('fecha'); //por definir 
         //let mes = antiguedad.getMonth(); //por definir
-       
+
         //fecha de ingreso
         const anio = parseInt(String(fecha).substring(0,4));
         const mes = parseInt(String(fecha).substring(5,7));
-        
+
         //fecha en vida real
         let date = new Date();
         let yyyy = parseInt(date.getFullYear());
         let mm = parseInt(date.getMonth()+1);
         var antiguedad = 0;
-    
+
         if ((mm-mes) <= 0){
             antiguedad = ((mm-mes)+(yyyy-anio)*12);
             console.log("meses pasados1: "+ antiguedad);
-    
+
         }else if (mm-mes >0){
             antiguedad = ((mm-mes)+(yyyy-anio)*12);
             console.log("meses pasados2: "+ antiguedad);
         }
-    
+
         if (directivo.checked){
             if (antiguedad<=12){
                 var antiguedad = 0;
@@ -699,9 +699,9 @@ function flujoFinanciero(event){
         } else if (antiguedad>120){
             var rendimientos = 0.13;
         } else console.log("Error, no cae en ningun caso de antiguedad");
-    
+
         console.log(rendimientos);
-    
+
         //calculo de prima HDI
         var prima = sfv*0.014;
 
@@ -746,18 +746,18 @@ function flujoFinanciero(event){
         } else alert("Ingresa un valor correcto");
         //console.log("prima es:" + prima);
         */
-    
+
         let subprestamo = sfv;
         //console.log("subprestamo es: " + subprestamo);
         var mensualidad = 0;
-        
+
         if ((0.05*bruto)>(prestamos*subprestamo)){
             mensualidad = (0.05*bruto);
             var meses = Math.round((subprestamo/mensualidad));
             var periodo = Math.ceil(meses/12);
             var prestamo = (subprestamo+(prima*periodo))*0.9;
             var credito = Math.round((prestamo/mensualidad));
-            
+
         } else var mensualidad = subprestamo*prestamos;
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
@@ -777,15 +777,74 @@ function flujoFinanciero(event){
         console.log(FDT)
         i = deuda
 
+        //document.getElementsByClassName("form-tercero").destroy //para elimiar el boton
+
+        var list = document.getElementsByClassName("hijos1");
+        var b = document.getElementById("col1");
+        var elemento = document.createElement("div");
+        b.insertAdjacentElement("beforeend", elemento);
+        //elemento.insertAdjacentText("beforeend", col1);
+        elemento.classList.add("hijos1");
+
+        var list2 = document.getElementsByClassName("hijos2");
+        var b2 = document.getElementById("col2");
+        var elemento2 = document.createElement("div");
+        b2.insertAdjacentElement("beforeend", elemento2);
+        //elemento.insertAdjacentText("beforeend", col1);
+        elemento2.classList.add("hijos2");
+
+        var list3 = document.getElementsByClassName("hijos3");
+        var b3 = document.getElementById("col3");
+        var elemento3 = document.createElement("div");
+        b3.insertAdjacentElement("beforeend", elemento3);
+        //elemento.insertAdjacentText("beforeend", col1);
+        elemento3.classList.add("hijos3");
+
+        var list4 = document.getElementsByClassName("hijos4");
+        var b4 = document.getElementById("col4");
+        var elemento4 = document.createElement("div");
+        b4.insertAdjacentElement("beforeend", elemento4);
+        //elemento.insertAdjacentText("beforeend", col1);
+        elemento4.classList.add("hijos4");
+
+        var list5 = document.getElementsByClassName("hijos5");
+        var b5 = document.getElementById("col5");
+        var elemento5 = document.createElement("div");
+        b5.insertAdjacentElement("beforeend", elemento5);
+        //elemento.insertAdjacentText("beforeend", col1);
+        elemento5.classList.add("hijos5");
+
+        while(list.length > 0){
+            b.removeChild(list[0]);
+            b2.removeChild(list2[0]);
+            b3.removeChild(list3[0]);
+            b4.removeChild(list4[0]);
+            b5.removeChild(list5[0]);
+        }
+
         while ( (FDE-FDT)> mensualidad ){
-            console.log("mes "+ m + ": deuda: "+ i.toFixed(2) +" FDE:"+FDE.toFixed(2)+" FDT:"+ FDT.toFixed(2) + " Pagos: " +pagos.toFixed(2))
+            //console.log("mes "+ m + ": deuda: "+ i.toFixed(2) +" FDE:"+FDE.toFixed(2)+" FDT:"+ FDT.toFixed(2) + " Pagos: " +pagos.toFixed(2))
             //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
             col1 = "Mes "+ m +":" + "<br>"
+
+            var elemento = document.createElement("div");
+            var padre = document.getElementById("col1");
+            padre.insertAdjacentElement("beforeend", elemento);
+            elemento.insertAdjacentHTML("beforeend", col1);
+            elemento.classList.add("hijos1");
+
+
             var numb2= i.toFixed(0);
             var str2 = numb2.toString().split(".");
             str2[0] = str2[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             str2.join(".");
             col2 = "Deuda: $"+ str2+ "<br>"
+
+            var elemento2 = document.createElement("div");
+            var padre2 = document.getElementById("col2");
+            padre2.insertAdjacentElement("beforeend", elemento2);
+            elemento2.insertAdjacentHTML("beforeend", col2);
+            elemento2.classList.add("hijos2");
 
             var numb3= FDE.toFixed(0);
             var str3 = numb3.toString().split(".");
@@ -793,11 +852,23 @@ function flujoFinanciero(event){
             str3.join(".");
             col3 = "FRE: $"+str3+ "<br>"
 
+            var elemento3 = document.createElement("div");
+            var padre3 = document.getElementById("col3");
+            padre3.insertAdjacentElement("beforeend", elemento3);
+            elemento3.insertAdjacentHTML("beforeend", col3);
+            elemento3.classList.add("hijos3");
+
             var numb4= FDT.toFixed(0);
             var str4 = numb4.toString().split(".");
             str4[0] = str4[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             str4.join(".");
             col4 = "FRT: $"+ str4+ "<br>"
+
+            var elemento4 = document.createElement("div");
+            var padre4 = document.getElementById("col4");
+            padre4.insertAdjacentElement("beforeend", elemento4);
+            elemento4.insertAdjacentHTML("beforeend", col4);
+            elemento4.classList.add("hijos4");
 
             var numb5= pagos.toFixed(0);
             var str5 = numb5.toString().split(".");
@@ -806,11 +877,18 @@ function flujoFinanciero(event){
             //col5 = "Pagos: $" +pagos.toFixed(0)+ "<br>"
             col5 = "Pagos: $" + str5 + "<br>"
 
-            document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
-            document.getElementById('col2').insertAdjacentHTML("beforeend",col2)
-            document.getElementById('col3').insertAdjacentHTML("beforeend",col3)
-            document.getElementById('col4').insertAdjacentHTML("beforeend",col4)
-            document.getElementById('col5').insertAdjacentHTML("beforeend",col5)
+            var elemento5 = document.createElement("div");
+            var padre5 = document.getElementById("col5");
+            padre5.insertAdjacentElement("beforeend", elemento5);
+            elemento5.insertAdjacentHTML("beforeend", col5);
+            elemento5.classList.add("hijos5");
+
+
+            //document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
+            //document.getElementById('col2').insertAdjacentHTML("beforeend",col2)
+            //document.getElementById('col3').insertAdjacentHTML("beforeend",col3)
+            //document.getElementById('col4').insertAdjacentHTML("beforeend",col4)
+            //document.getElementById('col5').insertAdjacentHTML("beforeend",col5)
             //document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
             m= m+1
 
@@ -830,23 +908,48 @@ function flujoFinanciero(event){
                         //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
                         //document.getElementById('corridaFinanciera').insertAdjacentHTML("beforeend",lista)
                         col1 = " Mes "+ m +": " + "<br>"
+
+                        var elemento = document.createElement("div");
+                        var padre = document.getElementById("col1");
+                        padre.insertAdjacentElement("beforeend", elemento);
+                        elemento.insertAdjacentHTML("beforeend", col1);
+                        elemento.classList.add("hijos1");
+
                         var numb2= i.toFixed(0);
                         var str2 = numb2.toString().split(".");
                         str2[0] = str2[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         str2.join(".");
                         col2 = "Deuda: $"+ str2+ "<br>"
 
+                        var elemento2 = document.createElement("div");
+                        var padre2 = document.getElementById("col2");
+                        padre2.insertAdjacentElement("beforeend", elemento2);
+                        elemento2.insertAdjacentHTML("beforeend", col2);
+                        elemento2.classList.add("hijos2");
+
                         var numb3= FDE.toFixed(0);
                         var str3 = numb3.toString().split(".");
                         str3[0] = str3[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         str3.join(".");
-                        col3 = "FRE: $"+str3+ "<br>"
+                        col3 = "FRE: $"+ str3+ "<br>"
+
+                        var elemento3 = document.createElement("div");
+                        var padre3 = document.getElementById("col3");
+                        padre3.insertAdjacentElement("beforeend", elemento3);
+                        elemento3.insertAdjacentHTML("beforeend", col3);
+                        elemento3.classList.add("hijos3");
 
                         var numb4= FDT.toFixed(0);
                         var str4 = numb4.toString().split(".");
                         str4[0] = str4[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         str4.join(".");
                         col4 = "FRT: $"+ str4+ "<br>"
+
+                        var elemento4 = document.createElement("div");
+                        var padre4 = document.getElementById("col4");
+                        padre4.insertAdjacentElement("beforeend", elemento4);
+                        elemento4.insertAdjacentHTML("beforeend", col4);
+                        elemento4.classList.add("hijos4");
 
                         var numb5= pagos.toFixed(0);
                         var str5 = numb5.toString().split(".");
@@ -855,16 +958,23 @@ function flujoFinanciero(event){
                         //col5 = "Pagos: $" +pagos.toFixed(0)+ "<br>"
                         col5 = "Pagos: $" + str5 + "<br>"
 
-                        document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
-                        document.getElementById('col2').insertAdjacentHTML("beforeend",col2)
-                        document.getElementById('col3').insertAdjacentHTML("beforeend",col3)
-                        document.getElementById('col4').insertAdjacentHTML("beforeend",col4)
-                        document.getElementById('col5').insertAdjacentHTML("beforeend",col5)
+                        var elemento5 = document.createElement("div");
+                        var padre5 = document.getElementById("col5");
+                        padre5.insertAdjacentElement("beforeend", elemento5);
+                        elemento5.insertAdjacentHTML("beforeend", col5);
+                        elemento5.classList.add("hijos5");
+
+                        //document.getElementById('col1').insertAdjacentHTML("beforeend",col1)
+                        //document.getElementById('col2').insertAdjacentHTML("beforeend",col2)
+                        //document.getElementById('col3').insertAdjacentHTML("beforeend",col3)
+                        //document.getElementById('col4').insertAdjacentHTML("beforeend",col4)
+                        //document.getElementById('col5').insertAdjacentHTML("beforeend",col5)
                     }else mensualidad=mensualidad
             }else mensualidad = mensualidad
         }
-    var advertencia = "La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%.<br> Deuda: Es la diferencia entre el fondo de ahorro de la empresa y trabajador. <br> FRE y FRT: Son el fondo de ahorro de empresa y trabajador. <br> Pagos: Son los pagos acumulados. <br> Los datos mostrados son solo una simulación y esto no asegura los mismos resultados."
-    document.getElementById('ad').insertAdjacentHTML("beforeend", advertencia)
+    var advertencia = "<br> La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%.<br> Deuda: Es la diferencia entre el fondo de ahorro de la empresa y trabajador. <br> FRE y FRT: Son el fondo de ahorro de empresa y trabajador. <br> Pagos: Son los pagos acumulados. <br> Los datos mostrados son solo una simulación y esto no asegura los mismos resultados."
+    document.getElementById('ad').innerHTML = advertencia;
+    console.log("Hijos es: " + list.length)
 }
 
 function productos(){

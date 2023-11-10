@@ -24,23 +24,23 @@
             <label> (1 panel = 550 W)</label><br>
             <input type="number" step="550" id="kwp" placeholder="1650" value="1650"><br>
             <label> Precio actual del dolar </label><br>
-            <input type="number" step="any" id="dolar" placeholder="" value=""><br>
+            <input type="number" step="any" id="dolar" placeholder="" value="18"><br>
             <label> Saldo en Cuenta Corriente </label><br>
             <input type="number" id="CC" placeholder="0" value="0"><br>
             <label>Saldo en Autocop </label><br>
             <input type="number" id="autocop" placeholder="0" value="0"><br>
             <label>Fondo de ahorro empresa </label><br>
-            <input type="number" id="FDE" placeholder="100,000" value=""><br>
+            <input type="number" id="FDE" placeholder="100,000" value="100000"><br>
             <label>Fondo de ahorro trabajador </label><br>
-            <input type="number" id="FDT" placeholder="100,000" value=""><br>
+            <input type="number" id="FDT" placeholder="100,000" value="100000"><br>
             <label>Fecha de ingreso </label><br>
             <input type="date" id="fecha" value=""><br>
             <label>¿Eres directivo? </label><br>
             <input type="checkbox" id="directivo"  ><br>
             <label>Sueldo bruto </label><br>
-            <input type="number" id="bruto" placeholder="20,000" value=""><br>
+            <input type="number" id="bruto" placeholder="20,000" value="20000"><br>
             <label>Sueldo neto </label><br>
-            <input type="number" id="neto" placeholder="14,000" value=""><br>
+            <input type="number" id="neto" placeholder="14,000" value="20000"><br>
             <label>¿Cuántos prestamos haz solicitado antes? ej. (0, 1, 2...) </label><br>
             <input type="number" id="prestamos" placeholder="0" value="0"><br>
             <label>Respuesta:</label>
@@ -86,21 +86,17 @@
         </section>
     <form  method="get" class="form-tercero">
         <label id="corrida-f">Corrida financiera</label><br>
-        <button type="button" id="flujo">Mostrar</button><br>
-        <div class="section-f3 hidden">
+        <button type="button" id="flujo">Calcular</button><br>
+            <div class="section-f3 hidden">
                 <p class="col1" id="col1"></p>
                 <p class="col1" id="col2"></p>
                 <p class="col1" id="col3"></p>
                 <p class="col1" id="col4"></p>
                 <p class="col1" id="col5"></p>
             </div>
-            <label ><i id="ad"></i></label>
-        </form>
-        <nav class="nav2">
-            <div class="titulo">
-            Equipos ahorradores
-            </div>
-        </nav>
+        <label ><i id="ad"></i></label>
+    </form>
+
         <form method="get" class="form-cuarto">
             <div class="section-f4">
                 <label> <h3>Paso 1 de 2</h3><h4>Calculamos su consumo anual</h4></label>
