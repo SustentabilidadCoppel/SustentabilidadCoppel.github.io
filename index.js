@@ -5,10 +5,13 @@ const energetica = document.getElementById("energia");
 
 clean.addEventListener("click", limpiar);
 cuestionario.addEventListener("click", candidatos);
-corrida.addEventListener("click", flujoFinanciero);
-energetica.addEventListener("click", energia);
-energetica.addEventListener("click", render);
-
+cuestionario.addEventListener("click", energia);
+cuestionario.addEventListener("click", render);
+cuestionario.addEventListener("click", flujoFinanciero);
+//corrida.addEventListener("click", flujoFinanciero);
+//energetica.addEventListener("click", energia);
+//energetica.addEventListener("click", render);
+//------------------------------------------
 function limpiar(event){
     document.getElementById('Calculadora').reset();
 }

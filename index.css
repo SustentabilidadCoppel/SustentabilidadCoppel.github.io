@@ -9,7 +9,7 @@ body {
     margin:0;
     color: white;
     padding: 12px;
-    text-align: left;
+    text-align:justify;
     font-family: 'Lora';
     font-size: 40px;
     position: fixed;
@@ -17,9 +17,12 @@ body {
     background-color: rgb(83,97,109);
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content:space-between;
+    justify-content:space-around;
 }
 
+.nav-btn{
+    display: flex;
+}
 .pag2{
     text-decoration: none;
     color: white;
