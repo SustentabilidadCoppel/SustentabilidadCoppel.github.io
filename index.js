@@ -2,16 +2,12 @@ const cuestionario = document.getElementById("Calculadora");
 const clean = document.getElementById("limpiar");
 const corrida = document.getElementById("flujo");
 const energetica = document.getElementById("energia");
-const producto = document.getElementById("resultado-productos");
-const respuesta = document.getElementById("productos");
 
 clean.addEventListener("click", limpiar);
 cuestionario.addEventListener("click", candidatos);
 corrida.addEventListener("click", flujoFinanciero);
 energetica.addEventListener("click", energia);
 energetica.addEventListener("click", render);
-producto.addEventListener("click", productos);
-respuesta.addEventListener("change", respuestas);
 
 function limpiar(event){
     document.getElementById('Calculadora').reset();
@@ -756,13 +752,13 @@ function flujoFinanciero(event){
             var meses = Math.round((subprestamo/mensualidad));
             var periodo = Math.ceil(meses/12);
             var prestamo = (subprestamo+(prima*periodo))*0.9;
-            var credito = Math.round((prestamo/mensualidad));
+            //var credito = Math.round((prestamo/mensualidad));
 
         } else var mensualidad = subprestamo*prestamos;
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
         var prestamo = (subprestamo+(prima*periodo))*0.9;
-        var credito = Math.round((prestamo/mensualidad)+2);
+        //var credito = Math.round((prestamo/mensualidad)+2);
         //console.log("prestamo total: "+prestamo);
         var deuda = prestamo;
         console.log(FDE);
@@ -977,35 +973,5 @@ function flujoFinanciero(event){
     console.log("Hijos es: " + list.length)
 }
 
-function productos(){
-    var potencia = document.getElementById('potencia').value;
-    var horas = document.getElementById('horas').value;
-    var semanas = document.getElementById('semanas').value;
-    const semananasEnElAnio = 52.12
 
-    var resultado = (potencia*horas*semanas*semananasEnElAnio)
-
-    document.getElementById('resultado-producto').innerText= "Consumo: " +(resultado/1000).toFixed(2) + " kWh al año"
-}
-
-function eco(){
-    var demanda = document.getElementById('energia-pagar').value;
-    var potencia = document.getElementById('potencia').value;
-    var horas = document.getElementById('horas').value;
-    var semanas = document.getElementById('semanas').value;
-    const semananasEnElAnio = 52.12
-    var potenciaEcologica = (potencia*0.80);
-
-    var ahorro = 0
-    var consumoProducto = ((potencia*horas*semanas*semananasEnElAnio)/1000).toFixed(2);
-    var consumoEficiente = ((potenciaEcologica*horas*semanas*semananasEnElAnio)/1000).toFixed(2);
-    ahorro = (consumoProducto - consumoEficiente).toFixed(2);
-    document.getElementById('eco').innerHTML= "Energía que deja de pagar (kWh): " + ahorro + "<br> Cobertura de ahorro: " + ((ahorro/demanda)*100).toFixed(2) + "%";
-    return 0;
-}
-
-function respuestas(event){
-    console.log(respuesta.value + "Ha cambiado.")
-}
-
-//pendiente elegir los valores de lista en etiqueta Select en html 
+//pendiente hacer nueva version estetica.
