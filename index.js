@@ -13,7 +13,7 @@ cuestionario.addEventListener("click", flujoFinanciero);
 //energetica.addEventListener("click", render);
 //------------------------------------------
 function limpiar(event){
-    document.getElementById('Calculadora').reset();
+    window.location.href = window.location.href;;
 }
 
 function candidatos(event){
