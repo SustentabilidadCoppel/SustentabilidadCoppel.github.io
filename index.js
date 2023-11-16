@@ -177,7 +177,7 @@ function energia(event){
 
     var meses = [ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic];
     var dias = [31,28,31,30,31,30,31,31,30,31,30,31];
-    var hsp = [5.55,6.06,7.13,7.08,7.11,6.69,6.02,5.83,5.85,6.38,5.79,5.23];
+    var hsp = [4.32,4.32,4.32,4.32,4.32,4.32,4.32,4.32,4.32,4.32,4.32,4.32]; //factor de planta al 18% minimo, (365*24hrs*18%)= 4.32 HSP
 
     //Actualizar las tarifas para el año que acaba de pasar. Ej. 2023 en el 2024
     var tarifaBase = [0.882,0.887,0.892,0.897,0.669,0.673,0.677,0.681,0.685,0.689,0.933,0.939];
@@ -204,8 +204,8 @@ function energia(event){
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
 
-        var eficiencia = 0.82;
-        var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
+        //var eficiencia = 0.82;
+        var generacion = (dias[i])*(hsp[i])*kwp; //se elimino (*eficiencia)
         var facturacion = (meses[i])-generacion + extra;
         var facturacionNormal = (meses[i]);
         var base =0;
@@ -298,8 +298,8 @@ function energia(event){
     for (i=4 ; i < 10 ; i++ ){
         //console.log("ciclo 2, consumo del mes: "+ meses[i]);
 
-    var eficiencia = 0.82;
-    var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
+    //var eficiencia = 0.82;
+    var generacion = (dias[i])*(hsp[i])*kwp; //se saco eficiencia
     var facturacion = (meses[i])-generacion + extra;
     var facturacionNormal = (meses[i]);
     var base =0;
@@ -412,8 +412,8 @@ function energia(event){
     for (i=10 ; i < 12 ; i++ ){
         //console.log("ciclo 3, consumo del mes: "+ meses[i]);
 
-    var eficiencia = 0.82;
-    var generacion = (dias[i])*(hsp[i])*eficiencia*kwp;
+    //var eficiencia = 0.82;
+    var generacion = (dias[i])*(hsp[i])*kwp; //se saco eficiencia
     var facturacion = (meses[i])-generacion + extra;
     var facturacionNormal = (meses[i]);
     var base =0;
