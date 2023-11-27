@@ -181,10 +181,10 @@ function energia(event){
 
     //Actualizar las tarifas para el año que acaba de pasar. Ej. 2023 en el 2024
     //--1F
-    var tarifaBase = [0.882,0.887,0.892,0.897,0.669,0.673,0.677,0.681,0.685,0.689,0.933,0.939];
-    var tarifaInterbajo = [1.073,1.079,1.085,1.091,0.835,0.84,0.845,0.85,0.855,0.86,1.139,1.146];
-    var tarifaInteralto = [0,0,0,0,2.032,2.044,2.056,2.068,2.08,2.092,0,0];
-    var tarifaExcedente = [3.134,3.153,3.172,3.191,3.210,3.229,3.248,3.267,3.286,3.306,3.326,3.346];
+    //var tarifaBase = [0.882,0.887,0.892,0.897,0.669,0.673,0.677,0.681,0.685,0.689,0.933,0.939];
+    //var tarifaInterbajo = [1.073,1.079,1.085,1.091,0.835,0.84,0.845,0.85,0.855,0.86,1.139,1.146];
+    //var tarifaInteralto = [0,0,0,0,2.032,2.044,2.056,2.068,2.08,2.092,0,0];
+    //var tarifaExcedente = [3.134,3.153,3.172,3.191,3.210,3.229,3.248,3.267,3.286,3.306,3.326,3.346];
     //--1E
     //var tarifaBase = [0.882,0.887,0.892,0.897,0.669,0.673,0.677,0.681,0.685,0.689,0.933,0.939];
     //var tarifaInterbajo = [1.073,1.079,1.085,1.091,0.835,0.84,0.845,0.85,0.855,0.86,1.139,1.146];
@@ -2061,70 +2061,70 @@ function energia(event){
             label: 'Pago mensual con paneles',
             data: facturaGrafica,
             backgroundColor:[
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)',
-                'rgba(247,99,0,0.6)'
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)',
+                'rgba(255,221,47,0.8)'
             ],
             borderColor: [
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)',
-                'rgba(247,99,0,1)'
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)',
+                'rgba(255,221,47,1)'
             ],
             borderWidth: 2,
-            hoverBackgroundColor:'rgba(247,99,0,1)',
+            hoverBackgroundColor:'rgba(255,221,47,1)',
             hoverBorderWidth: 0,
         },
         {
             label: 'Pago mensual sin paneles',
             data: facturaNormalGrafica,
             backgroundColor:[
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)',
-                'rgba(83,97,109,0.5)'
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)',
+                'rgba(2,102,174,0.5)'
             ],
             borderColor: [
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)',
-                'rgba(83,97,109,1)'
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)',
+                'rgba(2,102,174,1)'
             ],
             borderWidth: 2,
-            hoverBackgroundColor:'rgba(83,97,109,1)',
+            hoverBackgroundColor:'rgba(2,102,174,1)',
             hoverBorderWidth: 0,
         }
     ]
@@ -2167,7 +2167,6 @@ function render(){
 
 function flujoFinanciero(event){
         //document.getElementById('flujo').remove('flujo');
-        var nombre = document.getElementById('nombre').value;
         var FDE = parseFloat(document.getElementById('FDE').value);
         var FDT = parseFloat(document.getElementById('FDT').value);
         var dolar = parseFloat(document.getElementById('dolar').value);
@@ -2176,12 +2175,10 @@ function flujoFinanciero(event){
         var CC = parseFloat(document.getElementById('CC').value);
         var autocop = parseFloat(document.getElementById('autocop').value);
         var bruto = parseFloat(document.getElementById('bruto').value);
-        var neto = parseFloat(document.getElementById('neto').value);
         var fecha = (document.getElementById('fecha').value);
         var directivo = document.getElementById('directivo');
         var cetes = 0.09;
         //var cetes = parseFloat(document.getElementById('cetes').value)/100;
-        var FDTT = FDT - CC - autocop;
         let sfv = (kwp*dolar*1.2)*1.16;
         //var antiguedad = document.getElementById('fecha'); //por definir 
         //let mes = antiguedad.getMonth(); //por definir
