@@ -77,6 +77,10 @@ body {
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 
+.none{
+    display: none;
+}
+
 .form-primero input{
     width: 250px;
     align-content: center;
@@ -113,11 +117,7 @@ body {
     align-content: center;
     }
 
-#sinProyecto{
-    font-size: 15px;
-}
-
-#conProyecto{
+.texto-info{
     font-size: 15px;
 }
 
