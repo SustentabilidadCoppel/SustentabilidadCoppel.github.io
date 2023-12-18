@@ -13,7 +13,8 @@ cuestionario.addEventListener("click", flujoFinanciero);
 //energetica.addEventListener("click", render);
 //------------------------------------------
 
-var watt = 1.33;
+var watt = [0,0,1.3688,1.1832,1.1136,1.0788,1.0324,1.0556,1.0208,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986];
+
 function limpiar(event){
     window.location.href = window.location.href;;
 }
@@ -35,7 +36,7 @@ function candidatos(event){
     const fecha = (document.getElementById('fecha').value);
     const directivo = document.getElementById('directivo');
     const FDTT = FDT - CC - autocop;
-    let sfv = (kwp*dolar*watt);
+    let sfv = (kwp*dolar*watt[(kwp/540)]);
     //var antiguedad = document.getElementById('fecha'); //por definir
     //let mes = antiguedad.getMonth(); //por definir
 
@@ -133,13 +134,13 @@ function candidatos(event){
         mensualidad = (0.05*bruto);
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
-        var prestamo = (subprestamo+(prima*periodo))*0.9; //es 0.9 porque es el 90% que se saca del fondo de ahorro, el 10% es de su bolsillo
-        var credito = Math.round((prestamo/mensualidad)*1.1);
+        var prestamo = (subprestamo+(prima*2))*0.9; //es 0.9 porque es el 90% que se saca del fondo de ahorro, el 10% es de su bolsillo, el 2 es porque son 2 años, reemplazar 2 -> periodo si quiere cubrir los paneles por todo el prestamo. 
+        var credito = Math.round((prestamo/mensualidad)*1.1); // tiempo estimado de meses 1.1 es por la diferencia entre el fondo de ahorrrrro y sus rendimientos
 
     } else var mensualidad = subprestamo*prestamos;
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
-        var prestamo = (subprestamo+(prima*periodo))*0.9;
+        var prestamo = (subprestamo+(prima*2))*0.9;
         var credito = Math.round((prestamo/mensualidad)*1.1);
         console.log("prima total: "+prima*periodo);
 
@@ -3574,7 +3575,7 @@ var minimo = Math.min(...tir);
 
     //respuestas de las simulaciones ---------------------------
     var sugerencia = (((totaldemanda/(4.32*365)))*1000/540).toFixed(2);
-    document.getElementById('sugerencia').innerHTML= "Cobertura 100% " + sugerencia + " paneles de 540 W <br> Mejor retorno de inversión: " + mejorOpcion + " paneles"; 
+    document.getElementById('sugerencia').innerHTML= "Cobertura 100% " + sugerencia + " paneles de 540 W <br> Mejor retorno de inversión: " + mejorOpcion + " paneles"+"<br> Tiempo de retorno: " + minimo.toFixed(2)+ " años"; 
     document.getElementById('sinProyecto').innerText= "Pago sin paneles: $" + sinProyecto;
     document.getElementById('conProyecto').innerHTML= "Pago con paneles: $" + conProyecto+ "<br> Energía que deja de pagar (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Ahorro energético: " + cobertura + "% <br> Ahorro economico "+ coberturaEconomica +"%<br> <i>Los valores son anuales. </i>";
 }
@@ -3807,13 +3808,13 @@ function flujoFinanciero(event){
             mensualidad = (0.05*bruto);
             var meses = Math.round((subprestamo/mensualidad));
             var periodo = Math.ceil(meses/12);
-            var prestamo = (subprestamo+(prima*periodo))*0.9;
+            var prestamo = (subprestamo+(prima*2))*0.9;
             //var credito = Math.round((prestamo/mensualidad));
 
         } else var mensualidad = subprestamo*prestamos;
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
-        var prestamo = (subprestamo+(prima*periodo))*0.9;
+        var prestamo = (subprestamo+(prima*2))*0.9;
         //var credito = Math.round((prestamo/mensualidad)+2);
         //console.log("prestamo total: "+prestamo);
         var deuda = prestamo;
