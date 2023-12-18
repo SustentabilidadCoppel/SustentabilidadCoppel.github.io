@@ -3710,7 +3710,7 @@ function flujoFinanciero(event){
         var directivo = document.getElementById('directivo');
         var cetes = 0.09;
         //var cetes = parseFloat(document.getElementById('cetes').value)/100;
-        let sfv = (kwp*dolar*watt);
+        let sfv = (kwp*dolar*watt[(kwp/540)]);
         //var antiguedad = document.getElementById('fecha'); //por definir
         //let mes = antiguedad.getMonth(); //por definir
 
