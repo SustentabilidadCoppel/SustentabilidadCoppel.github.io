@@ -244,11 +244,11 @@ function energia(event){
         var extra = 0;
     var tarifa = document.getElementById("tarifa").value
     if (tarifa === "1"){
-        //tarifa 1F 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.717,0.722,0.727,0.732,0.737,0.742,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,0.898,0.904,0.91,0.916,0.922,0.928,1.227,1.235];
-        var tarifaInteralto = [0,0,0,0,2.184,2.198,2.212,2.226,2.24,2.254,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        //tarifa 1F 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.767,0.77,0.773,0.776,0.779,0.782,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,0.955,0.958,0.961,0.964,0.967,0.97,1.28,1.285];
+        var tarifaInteralto = [0,0,0,0,2.322,2.33,2.338,2.346,2.354,2.362,0,0];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -544,11 +544,11 @@ function energia(event){
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
     }else if (tarifa === "2"){
-        //tarifa 1E 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.717,0.722,0.727,0.732,0.737,0.742,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,0.898,0.904,0.91,0.916,0.922,0.928,1.227,1.011];
-        var tarifaInteralto = [0,0,0,0,1.168,1.175,1.182,1.189,1.196,1.204,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        //tarifa 1E 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.767,0.77,0.773,0.776,0.779,0.782,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,0.955,0.958,0.961,0.964,0.967,0.97,1.28,1.285];
+        var tarifaInteralto = [0,0,0,0,1.24,1.244,1.248,1.252,1.256,1.26,0,0];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -844,11 +844,11 @@ function energia(event){
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
     }else if (tarifa === "3"){
-        //tarifa 1D 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.866,0.871,0.876,0.882,0.888,0.894,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.004,1.01,1.016,1.022,1.028,1.034,1.227,1.235];
-        var tarifaInteralto = [0,0,0,0,1.294,1.302,1.31,1.318,1.326,1.334,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        //tarifa 1D 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
+        var tarifaInteralto = [0,0,0,0,1.375,1.38,1.385,1.39,1.395,1.4,0,0];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -1144,11 +1144,11 @@ function energia(event){
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
     }else if (tarifa === "4"){
-        //tarifa 1C 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.866,0.871,0.876,0.882,0.888,0.894,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.004,1.01,1.016,1.022,1.028,1.034,1.227,1.235];
-        var tarifaInteralto = [0,0,0,0,1.294,1.302,1.31,1.318,1.326,1.334,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        //tarifa 1C 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
+        var tarifaInteralto = [0,0,0,0,1.375,1.38,1.385,1.39,1.395,1.4,0,0];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -1444,11 +1444,11 @@ function energia(event){
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
     }else if (tarifa === "5"){
-        //tarifa 1B 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.866,0.871,0.876,0.882,0.888,0.894,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.004,1.01,1.016,1.022,1.028,1.034,1.227,1.235];
+        //tarifa 1B 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
         var tarifaInteralto = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
              //ene-dic 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 12 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -1542,10 +1542,10 @@ function energia(event){
     console.log("Demanda acumulada part1: " + totaldemanda);
     }else if (tarifa === "6"){
         //tarifa 1A 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.866,0.871,0.876,0.882,0.888,0.894,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.004,1.01,1.016,1.022,1.028,1.034,1.227,1.235];
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
         var tarifaInteralto = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-dic 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 12 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -1638,11 +1638,11 @@ function energia(event){
     console.log("generacion acumulada part1: " + totalgeneracion);
     console.log("Demanda acumulada part1: " + totaldemanda);
 
-    }else{//tarifa 1 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.969,0.975,0.981,0.987,0.993,0.999,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.181,1.188,1.195,1.203,1.211,1.219,1.227,1.235];
+    }else{//tarifa 1 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
         var tarifaInteralto = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
 
         //ene-dic 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 12 ; i++ ){
@@ -1762,11 +1762,11 @@ var minimo = Math.min(...tir);
     var kwp = document.getElementById("kwp").value/1000;
     var tarifa = document.getElementById("tarifa").value
     if (tarifa === "1"){
-        //tarifa 1F 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.717,0.722,0.727,0.732,0.737,0.742,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,0.898,0.904,0.91,0.916,0.922,0.928,1.227,1.235];
-        var tarifaInteralto = [0,0,0,0,2.184,2.198,2.212,2.226,2.24,2.254,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        //tarifa 1F 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.767,0.77,0.773,0.776,0.779,0.782,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,0.955,0.958,0.961,0.964,0.967,0.97,1.28,1.285];
+        var tarifaInteralto = [0,0,0,0,2.322,2.33,2.338,2.346,2.354,2.362,0,0];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -2062,11 +2062,11 @@ var minimo = Math.min(...tir);
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
     }else if (tarifa === "2"){
-        //tarifa 1E 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.717,0.722,0.727,0.732,0.737,0.742,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,0.898,0.904,0.91,0.916,0.922,0.928,1.227,1.011];
-        var tarifaInteralto = [0,0,0,0,1.168,1.175,1.182,1.189,1.196,1.204,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        //tarifa 1E 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.767,0.77,0.773,0.776,0.779,0.782,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,0.955,0.958,0.961,0.964,0.967,0.97,1.28,1.285];
+        var tarifaInteralto = [0,0,0,0,1.24,1.244,1.248,1.252,1.256,1.26,0,0];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -2362,11 +2362,11 @@ var minimo = Math.min(...tir);
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
     }else if (tarifa === "3"){
-        //tarifa 1D 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.866,0.871,0.876,0.882,0.888,0.894,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.004,1.01,1.016,1.022,1.028,1.034,1.227,1.235];
-        var tarifaInteralto = [0,0,0,0,1.294,1.302,1.31,1.318,1.326,1.334,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        //tarifa 1D 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
+        var tarifaInteralto = [0,0,0,0,1.375,1.38,1.385,1.39,1.395,1.4,0,0];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -2662,11 +2662,11 @@ var minimo = Math.min(...tir);
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
     }else if (tarifa === "4"){
-        //tarifa 1C 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.866,0.871,0.876,0.882,0.888,0.894,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.004,1.01,1.016,1.022,1.028,1.034,1.227,1.235];
-        var tarifaInteralto = [0,0,0,0,1.294,1.302,1.31,1.318,1.326,1.334,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        //tarifa 1C 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
+        var tarifaInteralto = [0,0,0,0,1.375,1.38,1.385,1.39,1.395,1.4,0,0];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-abr 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 4 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -2962,11 +2962,11 @@ var minimo = Math.min(...tir);
     console.log("Generacion extra: "+ nombreMeses[i] +" " + extra);
     };
     }else if (tarifa === "5"){
-        //tarifa 1B 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.866,0.871,0.876,0.882,0.888,0.894,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.004,1.01,1.016,1.022,1.028,1.034,1.227,1.235];
+        //tarifa 1B 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
         var tarifaInteralto = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
              //ene-dic 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 12 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -3059,11 +3059,11 @@ var minimo = Math.min(...tir);
     console.log("generacion acumulada part1: " + totalgeneracion);
     console.log("Demanda acumulada part1: " + totaldemanda);
     }else if (tarifa === "6"){
-        //tarifa 1A 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.866,0.871,0.876,0.882,0.888,0.894,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.004,1.01,1.016,1.022,1.028,1.034,1.227,1.235];
+        //tarifa 1A 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
         var tarifaInteralto = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
             //ene-dic 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 12 ; i++ ){
         //console.log("ciclo 1,consumo del mes: "+ meses[i]);
@@ -3156,11 +3156,11 @@ var minimo = Math.min(...tir);
     console.log("generacion acumulada part1: " + totalgeneracion);
     console.log("Demanda acumulada part1: " + totaldemanda);
 
-    }else{//tarifa 1 2023
-        var tarifaBase = [0.945,0.951,0.957,0.963,0.969,0.975,0.981,0.987,0.993,0.999,1.005,1.011];
-        var tarifaInterbajo = [1.153,1.16,1.167,1.174,1.181,1.188,1.195,1.203,1.211,1.219,1.227,1.235];
+    }else{//tarifa 1 2024
+        var tarifaBase = [1.015,1.019,1.023,1.027,0.921,0.924,0.927,0.93,0.933,0.936,1.055,1.059];
+        var tarifaInterbajo = [1.239,1.243,1.247,1.251,1.067,1.071,1.075,1.079,1.083,1.087,1.28,1.285];
         var tarifaInteralto = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var tarifaExcedente = [3.367,3.388,3.409,3.43,3.452,3.474,3.496,3.518,3.54,3.562,3.584,3.607];
+        var tarifaExcedente = [3.62,3.633,3.646,3.659,3.672,3.685,3.698,3.711,3.724,3.737,3.75,3.763];
 
         //ene-dic 3 ESCALONES DE TARIFAS
     for (i=0 ; i < 12 ; i++ ){
