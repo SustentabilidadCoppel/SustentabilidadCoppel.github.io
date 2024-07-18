@@ -36,7 +36,7 @@ function candidatos(event){
     const fecha = (document.getElementById('fecha').value);
     const directivo = document.getElementById('directivo');
     const FDTT = FDT - CC - autocop;
-    let sfv = (kwp*dolar*watt[(kwp/540)]);
+    let sfv = (kwp*dolar*watt[(kwp/550)]);
     //var antiguedad = document.getElementById('fecha'); //por definir
     //let mes = antiguedad.getMonth(); //por definir
 
@@ -226,9 +226,9 @@ function energia(event){
     let tir=[];
     let watts=[0,0,1.3688,1.1832,1.1136,1.0788,1.0324,1.0556,1.0208,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986];
 
-    //----------empezar el ciclo for aqui for (kwp= 0.540; kwp<10.8; kwp+0.540)---------
+    //----------empezar el ciclo for aqui for (kwp= 0.550; kwp<10.8; kwp+0.550)---------
     for (var r=2 ; r<21 ; r++ ){
-        var n = r * 0.54
+        var n = r * 0.55
         kwp = n;
         var totalsumado = 0;
         var totalsumado2 = 0;
@@ -3574,8 +3574,8 @@ var minimo = Math.min(...tir);
 
 
     //respuestas de las simulaciones ---------------------------
-    var sugerencia = (((totaldemanda/(4.32*365)))*1000/540).toFixed(2);
-    document.getElementById('sugerencia').innerHTML= "Cobertura 100% " + sugerencia + " paneles de 540 W <br> Mejor retorno de inversión: " + mejorOpcion + " paneles"+"<br> Tiempo de retorno: " + minimo.toFixed(2)+ " años"; 
+    var sugerencia = (((totaldemanda/(4.32*365)))*1000/550).toFixed(2);
+    document.getElementById('sugerencia').innerHTML= "Cobertura 100% " + sugerencia + " paneles de 550 W <br> Mejor retorno de inversión: " + mejorOpcion + " paneles"+"<br> Tiempo de retorno: " + minimo.toFixed(2)+ " años"; 
     document.getElementById('sinProyecto').innerText= "Pago sin paneles: $" + sinProyecto;
     document.getElementById('conProyecto').innerHTML= "Pago con paneles: $" + conProyecto+ "<br> Energía que deja de pagar (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Ahorro energético: " + cobertura + "% <br> Ahorro economico "+ coberturaEconomica +"%<br> <i>Los valores son anuales. </i>";
 }
@@ -3710,7 +3710,7 @@ function flujoFinanciero(event){
         var directivo = document.getElementById('directivo');
         var cetes = 0.09;
         //var cetes = parseFloat(document.getElementById('cetes').value)/100;
-        let sfv = (kwp*dolar*watt[(kwp/540)]);
+        let sfv = (kwp*dolar*watt[(kwp/550)]);
         //var antiguedad = document.getElementById('fecha'); //por definir
         //let mes = antiguedad.getMonth(); //por definir
 
