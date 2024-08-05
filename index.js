@@ -12,12 +12,14 @@ cuestionario.addEventListener("click", flujoFinanciero);
 //energetica.addEventListener("click", energia);
 //energetica.addEventListener("click", render);
 //------------------------------------------
-
-var watt = [0,0,1.3688,1.1832,1.1136,1.0788,1.0324,1.0556,1.0208,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986];
+//Precios por numeros de paneles agregar el precio del proveedor Green Republic
+var watt = [0,0,20735.0,31102.5,41470.0,51837.5,62205.0,72572.5,82940.0,93307.5,103675.0,114042.5,124410.0,134777.5,145145.0,155512.5,165880.0,176247.5,186615.0,196982.5,207350.0];
 
 function limpiar(event){
     window.location.href = window.location.href;;
 }
+
+
 
 function candidatos(event){
     //console.log({event}); para detener el reset es preventDefault.
@@ -26,7 +28,7 @@ function candidatos(event){
     //const nombre = document.getElementById('nombre').value;
     //const FDE = parseFloat(document.getElementById('FDE').value);
     const FDT = parseFloat(document.getElementById('FDT').value);
-    const dolar = parseFloat(document.getElementById('dolar').value);
+    //const dolar = parseFloat(document.getElementById('dolar').value);
     const kwp = parseFloat(document.getElementById('kwp').value);
     const prestamos = ((parseFloat(document.getElementById('prestamos').value)+1)/100);
     const CC = parseFloat(document.getElementById('CC').value);
@@ -36,7 +38,7 @@ function candidatos(event){
     const fecha = (document.getElementById('fecha').value);
     const directivo = document.getElementById('directivo');
     const FDTT = FDT - CC - autocop;
-    let sfv = (kwp*dolar*watt[(kwp/550)]);
+    let sfv = (watt[(kwp/550)]); //Precio del sistema solar
     //var antiguedad = document.getElementById('fecha'); //por definir
     //let mes = antiguedad.getMonth(); //por definir
 
@@ -134,13 +136,13 @@ function candidatos(event){
         mensualidad = (0.05*bruto);
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
-        var prestamo = (subprestamo+(prima*2))*0.9; //es 0.9 porque es el 90% que se saca del fondo de ahorro, el 10% es de su bolsillo, el 2 es porque son 2 años, reemplazar 2 -> periodo si quiere cubrir los paneles por todo el prestamo. 
+        var prestamo = (subprestamo+(prima*2))*1; //es 0.9 porque es el 90% que se saca del fondo de ahorro, el 10% es de su bolsillo, el 2 es porque son 2 años, reemplazar 2 -> periodo si quiere cubrir los paneles por todo el prestamo. 
         var credito = Math.round((prestamo/mensualidad)*1.1); // tiempo estimado de meses 1.1 es por la diferencia entre el fondo de ahorrrrro y sus rendimientos
 
     } else var mensualidad = subprestamo*prestamos;
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
-        var prestamo = (subprestamo+(prima*2))*0.9;
+        var prestamo = (subprestamo+(prima*2))*1;
         var credito = Math.round((prestamo/mensualidad)*1.1);
         console.log("prima total: "+prima*periodo);
 
@@ -150,7 +152,7 @@ function candidatos(event){
     if (FDTT >= prestamo){
         const subtotal=neto-mensualidad;
         if ((subtotal) > (bruto*0.4)){
-            document.getElementById('resultado').innerHTML= "Felicidades tienes posibilidades de un prestamo de <b>$"+ prestamo.toFixed(2) +"</b> pesos, con una mensualidad de <b>$"+ mensualidad.toFixed(2) +" pesos</b>." ; //el tiempo de tu prestamo es de <b>"+ credito +" meses </b> aproximadamente,
+            document.getElementById('resultado').innerHTML= "Felicidades tienes posibilidades de un prestamo de <b>$"+ prestamo.toFixed(2) +"</b> pesos, con una mensualidad de <b>$"+ mensualidad.toFixed(2) +"</b> pesos. Incluye un seguro por <b>$" + (prima*2).toFixed(0)+ "</b> pesos por un periodo de 2 años."; //el tiempo de tu prestamo es de <b>"+ credito +" meses </b> aproximadamente,
         } else document.getElementById('resultado').innerText= "Lo siento, no cumples con los requisitos.";
     }
     else document.getElementById('resultado').innerText= "Lo siento, no cumples con los requisitos.";
@@ -175,7 +177,7 @@ function energia(event){
     const oct = Math.ceil(document.getElementById("oct").value);
     const nov = Math.ceil(document.getElementById("nov").value);
     const dic = Math.ceil(document.getElementById("dic").value);
-    const dolar = parseFloat(document.getElementById('dolar').value);
+    //const dolar = parseFloat(document.getElementById('dolar').value);
 
 
     var meses = [ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic];
@@ -224,8 +226,8 @@ function energia(event){
     //var facturaNormal = [];
 
     let tir=[];
-    let watts=[0,0,1.3688,1.1832,1.1136,1.0788,1.0324,1.0556,1.0208,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986,0.986];
-
+    let watts=[0,0,20735.0,31102.5,41470.0,51837.5,62205.0,72572.5,82940.0,93307.5,103675.0,114042.5,124410.0,134777.5,145145.0,155512.5,165880.0,176247.5,186615.0,196982.5,207350.0];
+    //precios de sistemas solares
     //----------empezar el ciclo for aqui for (kwp= 0.550; kwp<10.8; kwp+0.550)---------
     for (var r=2 ; r<21 ; r++ ){
         var n = r * 0.55
@@ -523,7 +525,7 @@ function energia(event){
     //pagos de cada escalon
     //console.log("base sp:" + base1);
     //console.log("interbajo sp:" +interbajo1);
-    //console.log("exc sp:" +excedente1);
+    //console.log("exc sp para 1F:" +excedente1);
     //console.log("subtotal sp:" +subtotal1);
     //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
@@ -1710,7 +1712,7 @@ function energia(event){
     //pagos de cada escalon sin paneles
     //console.log("base sp:" + base1);
     //console.log("interbajo sp:" +interbajo1);
-    //console.log("exc sp:" +excedente1);
+    //console.log("exc sp:" +excedente1);  //consumo de excedente en tarifa 1
     //console.log("subtotal sp:" +subtotal1);
     //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
@@ -1736,7 +1738,7 @@ function energia(event){
     var conProyecto = (totalsumado + totalsumado2 + totalsumado3);
     var sinProyecto = (totalsumadoNormal + totalsumado2Normal + totalsumado3Normal);
     var ahorro = sinProyecto-conProyecto;
-    var tiempo = (((kwp*dolar*watts[r]*1000))/ahorro).toFixed(4);
+    var tiempo = (((watts[r]))/ahorro).toFixed(2); //Watts es el precio de los sistemas solares y sobre los ahorros se obtiene el tiempo de recuperación 
     tir.push(Number(tiempo));
 
 }
@@ -3560,7 +3562,7 @@ var minimo = Math.min(...tir);
 
     // aqui colocar el retorno de inversion como push, tir.push(retorno) var retorno = (prestamo/(sinProyecto-conProyecto));
     // tir.push(retorno);
-    
+
     /*console.log("total sumado: "+ totalsumado);
     console.log("total sumado2: "+ totalsumado2);
     console.log("total sumado3: "+ totalsumado3);
@@ -3575,9 +3577,9 @@ var minimo = Math.min(...tir);
 
     //respuestas de las simulaciones ---------------------------
     var sugerencia = (((totaldemanda/(4.32*365)))*1000/550).toFixed(2);
-    document.getElementById('sugerencia').innerHTML= "Cobertura 100% " + sugerencia + " paneles de 550 W <br> Mejor retorno de inversión: " + mejorOpcion + " paneles"+"<br> Tiempo de retorno: " + minimo.toFixed(2)+ " años"; 
-    document.getElementById('sinProyecto').innerText= "Pago sin paneles: $" + sinProyecto;
-    document.getElementById('conProyecto').innerHTML= "Pago con paneles: $" + conProyecto+ "<br> Energía que deja de pagar (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Ahorro energético: " + cobertura + "% <br> Ahorro economico "+ coberturaEconomica +"%<br> <i>Los valores son anuales. </i>";
+    document.getElementById('sugerencia').innerHTML= "<b> Sugerencias </b><br> Para cubrir el 100% de tu recibo necesitas: " + sugerencia + " paneles de 550 W <br> La opción con menor retorno de inversión es: " + mejorOpcion + " paneles <br> con un tiempo de retorno de: " + minimo.toFixed(2)+ " años";
+    document.getElementById('sinProyecto').innerHTML= "<b>Resultados de "+ ((kwp)*1000)/550 +" paneles</b><br>Sin paneles pagarías: $" + sinProyecto;
+    document.getElementById('conProyecto').innerHTML= "Con paneles pagarías: $" + conProyecto+ "<br> Ahorro ($): $"+ (sinProyecto-conProyecto)+"<br> Energía generada (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Ahorro energético: " + cobertura + "% <br> Ahorro economico "+ coberturaEconomica +"%<br> <i>Los valores son anuales. </i>";
 }
     //grafica en canvas por JS
     var nombreMeses =["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre", "Noviembre","Diciembre"];
@@ -3702,7 +3704,7 @@ function flujoFinanciero(event){
         //document.getElementById('flujo').remove('flujo');
         var FDE = parseFloat(document.getElementById('FDE').value);
         var FDT = parseFloat(document.getElementById('FDT').value);
-        var dolar = parseFloat(document.getElementById('dolar').value);
+        //var dolar = parseFloat(document.getElementById('dolar').value);
         var kwp = parseFloat(document.getElementById('kwp').value);
         var prestamos = ((parseFloat(document.getElementById('prestamos').value)+1)/100);
         var bruto = parseFloat(document.getElementById('bruto').value);
@@ -3710,7 +3712,7 @@ function flujoFinanciero(event){
         var directivo = document.getElementById('directivo');
         var cetes = 0.09;
         //var cetes = parseFloat(document.getElementById('cetes').value)/100;
-        let sfv = (kwp*dolar*watt[(kwp/550)]);
+        let sfv = (watt[(kwp/550)]);
         //var antiguedad = document.getElementById('fecha'); //por definir
         //let mes = antiguedad.getMonth(); //por definir
 
@@ -3808,13 +3810,13 @@ function flujoFinanciero(event){
             mensualidad = (0.05*bruto);
             var meses = Math.round((subprestamo/mensualidad));
             var periodo = Math.ceil(meses/12);
-            var prestamo = (subprestamo+(prima*2))*0.9;
+            var prestamo = (subprestamo+(prima*2))*1; //Porcentaje del prestamo
             //var credito = Math.round((prestamo/mensualidad));
 
         } else var mensualidad = subprestamo*prestamos;
         var meses = Math.round((subprestamo/mensualidad));
         var periodo = Math.ceil(meses/12);
-        var prestamo = (subprestamo+(prima*2))*0.9;
+        var prestamo = (subprestamo+(prima*2))*1; //Porcentaje del prestamo
         //var credito = Math.round((prestamo/mensualidad)+2);
         //console.log("prestamo total: "+prestamo);
         var deuda = prestamo;
