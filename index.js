@@ -12,13 +12,12 @@ cuestionario.addEventListener("click", flujoFinanciero);
 //energetica.addEventListener("click", energia);
 //energetica.addEventListener("click", render);
 //------------------------------------------
-//Precios por numeros de paneles agregar el precio del proveedor Green Republic
-var watt = [0,0,20735.0,31102.5,41470.0,51837.5,62205.0,72572.5,82940.0,93307.5,103675.0,114042.5,124410.0,134777.5,145145.0,155512.5,165880.0,176247.5,186615.0,196982.5,207350.0];
+//Precios por numeros de paneles agregar el precio del proveedor Green Republic - watt y watts son las listas con los precios de paneles
+var watt = [0,0,20985.56,31478.33,41971.11,52463.89,62956.67,73449.44,83942.22,94435.00,104927.78,115420.56,125913.33,136406.11,146898.89,157391.67,167884.44,178377.22,188870.00,199362.78];
 
 function limpiar(event){
     window.location.href = window.location.href;;
 }
-
 
 
 function candidatos(event){
@@ -226,7 +225,7 @@ function energia(event){
     //var facturaNormal = [];
 
     let tir=[];
-    let watts=[0,0,20735.0,31102.5,41470.0,51837.5,62205.0,72572.5,82940.0,93307.5,103675.0,114042.5,124410.0,134777.5,145145.0,155512.5,165880.0,176247.5,186615.0,196982.5,207350.0];
+    let watts=[0,0,20985.56,31478.33,41971.11,52463.89,62956.67,73449.44,83942.22,94435.00,104927.78,115420.56,125913.33,136406.11,146898.89,157391.67,167884.44,178377.22,188870.00,199362.78];
     //precios de sistemas solares
     //----------empezar el ciclo for aqui for (kwp= 0.550; kwp<10.8; kwp+0.550)---------
     for (var r=2 ; r<21 ; r++ ){
@@ -293,6 +292,7 @@ function energia(event){
     var subtotal = base + interbajo + excedente;
     var total = Math.round(subtotal*1.16);
     //facturacion con paneles fin
+    console.log("exc con paneles:" +excedente+" "+ nombreMeses[i]);
 
     //facturacion normal inicio
     if(facturacionNormal>75){
@@ -315,11 +315,12 @@ function energia(event){
     //facturacion normal fin
 
     //pagos de cada escalon sin paneles
-    //console.log("base sp:" + base1);
-    //console.log("interbajo sp:" +interbajo1);
-    //console.log("exc sp:" +excedente1);
+    console.log("base sp:" + base1);
+    console.log("interbajo sp:" +interbajo1);
+    console.log("exc sin paneles:" +excedente1);
+
     //console.log("subtotal sp:" +subtotal1);
-    //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
+    console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
 
     console.log("generacion: "+ generacion);
@@ -397,6 +398,7 @@ function energia(event){
     var subtotal = base + interbajo + interalto + excedente;
     var total = Math.round(subtotal*1.16);
     //facturacion con paneles fin
+    console.log("exc con paneles:" +excedente+" "+ nombreMeses[i]);
 
     //facturacion normal inicio, el problema esta en excedentes
     if(facturacionNormal>300){
@@ -429,12 +431,12 @@ function energia(event){
     //facturacion normal fin
 
     //pagos de cada escalon
-    //console.log("base sp:" + base1);
-    //console.log("interbajo sp:" +interbajo1);
-    //console.log("interalto sp:" +interalto1);
-    //console.log("exc sp:" +excedente1);
+    console.log("base sp:" + base1);
+    console.log("interbajo sp:" +interbajo1);
+    console.log("interalto sp:" +interalto1);
+    console.log("exc sp:" +excedente1);
     //console.log("subtotal sp:" +subtotal1);
-    //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
+    console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
     console.log("generacion: "+ generacion);
     console.log("demanda: "+ nombreMeses[i] +" "+ meses[i]);
@@ -501,7 +503,8 @@ function energia(event){
     var subtotal = base + interbajo + excedente;
     var total = Math.round(subtotal*1.16);
     //facturacion con paneles fin
-
+    console.log("exc con paneles:" +excedente+" "+ nombreMeses[i]);
+    
     //facturacion normal inicio
     if(facturacionNormal>75){
         var base1 = 75*tarifaBase[i];
@@ -523,11 +526,12 @@ function energia(event){
     //facturacion normal fin
 
     //pagos de cada escalon
-    //console.log("base sp:" + base1);
-    //console.log("interbajo sp:" +interbajo1);
-    //console.log("exc sp para 1F:" +excedente1);
+    console.log("base sp:" + base1);
+    console.log("interbajo sp:" +interbajo1);
+    console.log("exc sp para 1F:" +excedente1);
+
     //console.log("subtotal sp:" +subtotal1);
-    //console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
+    console.log("total sp:" +(1.16*(base1+interbajo1+interalto1+excedente1)))
 
     console.log("generacion: "+ generacion);
     console.log("demanda: "+ nombreMeses[i] +" "+ meses[i]);
@@ -3577,9 +3581,15 @@ var minimo = Math.min(...tir);
 
     //respuestas de las simulaciones ---------------------------
     var sugerencia = (((totaldemanda/(4.32*365)))*1000/550).toFixed(2);
-    document.getElementById('sugerencia').innerHTML= "<b> Sugerencias </b><br> Para cubrir el 100% de tu recibo necesitas: " + sugerencia + " paneles de 550 W <br> La opción con menor retorno de inversión es: " + mejorOpcion + " paneles <br> con un tiempo de retorno de: " + minimo.toFixed(2)+ " años";
+    document.getElementById('sugerencia').innerHTML= "<b> Sugerencias </b><br> Para cubrir el 100% de tu recibo necesitas: " + sugerencia + " paneles de 550 W. <br> Se sugiere un sistema del 65% el cual es: "+ (sugerencia*0.65).toFixed(2);
     document.getElementById('sinProyecto').innerHTML= "<b>Resultados de "+ ((kwp)*1000)/550 +" paneles</b><br>Sin paneles pagarías: $" + sinProyecto;
-    document.getElementById('conProyecto').innerHTML= "Con paneles pagarías: $" + conProyecto+ "<br> Ahorro ($): $"+ (sinProyecto-conProyecto)+"<br> Energía generada (kWh): "+ totalgeneracion.toFixed(0) +"<br> Energía que paga (kWh): "+ totaldemanda.toFixed(0) +"<br> Ahorro energético: " + cobertura + "% <br> Ahorro economico "+ coberturaEconomica +"%<br> <i>Los valores son anuales. </i>";
+    document.getElementById('conProyecto').innerHTML = `Con paneles pagarías: $${conProyecto}<br>
+    Ahorro ($): $${sinProyecto-conProyecto}<br>
+    Energía generada (kWh): ${totalgeneracion.toFixed(0)}<br>
+    Energía que paga (kWh): ${totaldemanda.toFixed(0)}<br>
+    <span class="importante">Ahorro energético: <b style="color: rgb(0, 0, 0);">${cobertura}%</b></span><br>
+    Ahorro económico: ${coberturaEconomica}%<br>
+    <i>Los valores son anuales.</i>`;
 }
     //grafica en canvas por JS
     var nombreMeses =["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre", "Noviembre","Diciembre"];
@@ -3876,7 +3886,7 @@ function flujoFinanciero(event){
             b4.removeChild(list4[0]);
             b5.removeChild(list5[0]);
         }
-
+        //contador del ciclo financiero 
         while ( (FDE-FDT)> mensualidad ){
             //console.log("mes "+ m + ": deuda: "+ i.toFixed(2) +" FDE:"+FDE.toFixed(2)+" FDT:"+ FDT.toFixed(2) + " Pagos: " +pagos.toFixed(2))
             //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
@@ -4029,7 +4039,7 @@ function flujoFinanciero(event){
         }
     var advertencia = "<br> La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%.<br> Deuda: Es la diferencia entre el fondo de ahorro de la empresa y trabajador. <br> FRE y FRT: Son el fondo de ahorro de empresa y trabajador. <br> Pagos: Son los pagos acumulados. <br> Los datos mostrados son solo una simulación y esto no asegura los mismos resultados."
     document.getElementById('ad').innerHTML = advertencia;
-    console.log("Hijos es: " + list.length)
+    //console.log("Hijos es: " + list.length)
 }
 
 
