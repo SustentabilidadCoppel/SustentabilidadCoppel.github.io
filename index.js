@@ -3581,7 +3581,7 @@ var minimo = Math.min(...tir);
 
     //respuestas de las simulaciones ---------------------------
     var sugerencia = (((totaldemanda/(4.32*365)))*1000/550).toFixed(2);
-    document.getElementById('sugerencia').innerHTML= "<b> Sugerencias </b><br> Para cubrir el 100% de tu recibo necesitas: " + sugerencia + " paneles de 550 W. <br> Se sugiere un sistema del 65% el cual es: "+ (sugerencia*0.65).toFixed(2);
+    document.getElementById('sugerencia').innerHTML= "<b> Sugerencias </b><br> Para cubrir el 100% de tu recibo necesitas: " + sugerencia + " paneles de 550 W. <br> Se sugiere un sistema del 65% el cual es: "+ (sugerencia*0.65).toFixed(2)+" paneles.;
     document.getElementById('sinProyecto').innerHTML= "<b>Resultados de "+ ((kwp)*1000)/550 +" paneles</b><br>Sin paneles pagarías: $" + sinProyecto;
     document.getElementById('conProyecto').innerHTML = `Con paneles pagarías: $${conProyecto}<br>
     Ahorro ($): $${sinProyecto-conProyecto}<br>
