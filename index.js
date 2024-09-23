@@ -13,10 +13,28 @@ cuestionario.addEventListener("click", flujoFinanciero);
 //energetica.addEventListener("click", render);
 //------------------------------------------
 //Precios por numeros de paneles agregar el precio del proveedor Green Republic - watt y watts son las listas con los precios de paneles
-var watt = [0,0,20985.56,31478.33,41971.11,52463.89,62956.67,73449.44,83942.22,94435.00,104927.78,115420.56,125913.33,136406.11,146898.89,157391.67,167884.44,178377.22,188870.00,199362.78];
-
+var watt = [0,0,23057.32,
+    34585.98,
+    46114.64,
+    51167.60,
+    61401.12,
+    71634.64,
+    81868.16,
+    88713.90,
+    98571.00,
+    108428.10,
+    118285.20,
+    119931.24,
+    129156.72,
+    138382.20,
+    144239.04,
+    153253.98,
+    162268.92,
+    171283.86
+    ];
+let paneles = 550; //colocar el tamaño de los paneles disponibles por el proveedor
 function limpiar(event){
-    window.location.href = window.location.href;;
+    window.location.href = window.location.href;
 }
 
 
@@ -37,7 +55,7 @@ function candidatos(event){
     const fecha = (document.getElementById('fecha').value);
     const directivo = document.getElementById('directivo');
     const FDTT = FDT - CC - autocop;
-    let sfv = (watt[(kwp/550)]); //Precio del sistema solar
+    let sfv = (watt[(kwp/paneles)]); //Precio del sistema solar
     //var antiguedad = document.getElementById('fecha'); //por definir
     //let mes = antiguedad.getMonth(); //por definir
 
@@ -225,7 +243,25 @@ function energia(event){
     //var facturaNormal = [];
 
     let tir=[];
-    let watts=[0,0,20985.56,31478.33,41971.11,52463.89,62956.67,73449.44,83942.22,94435.00,104927.78,115420.56,125913.33,136406.11,146898.89,157391.67,167884.44,178377.22,188870.00,199362.78];
+    let watts=[0,0,23057.32,
+        34585.98,
+        46114.64,
+        51167.60,
+        61401.12,
+        71634.64,
+        81868.16,
+        88713.90,
+        98571.00,
+        108428.10,
+        118285.20,
+        119931.24,
+        129156.72,
+        138382.20,
+        144239.04,
+        153253.98,
+        162268.92,
+        171283.86
+        ];
     //precios de sistemas solares
     //----------empezar el ciclo for aqui for (kwp= 0.550; kwp<10.8; kwp+0.550)---------
     for (var r=2 ; r<21 ; r++ ){
@@ -3580,9 +3616,9 @@ var minimo = Math.min(...tir);
 
 
     //respuestas de las simulaciones ---------------------------
-    var sugerencia = (((totaldemanda/(4.32*365)))*1000/550).toFixed(2);
-    document.getElementById('sugerencia').innerHTML= "<b> Sugerencias </b><br> Para cubrir el 100% de tu recibo necesitas: " + sugerencia + " paneles de 550 W. <br> Se sugiere un sistema del 65% el cual es: "+ (sugerencia*0.65).toFixed(2)+" paneles.";
-    document.getElementById('sinProyecto').innerHTML= "<b>Resultados de "+ ((kwp)*1000)/550 +" paneles</b><br>Sin paneles pagarías: $" + sinProyecto;
+    var sugerencia = (((totaldemanda/(4.32*365)))*1000/paneles).toFixed(2);
+    document.getElementById('sugerencia').innerHTML= "<b> Sugerencias </b><br> Para cubrir el 100% de tu recibo necesitas: " + sugerencia + " paneles de "+paneles+" W. <br> Se sugiere un sistema del 65% el cual es: "+ (sugerencia*0.65).toFixed(2)+" paneles.";
+    document.getElementById('sinProyecto').innerHTML= "<b>Resultados de "+ ((kwp)*1000)/paneles +" paneles</b><br>Sin paneles pagarías: $" + sinProyecto;
     document.getElementById('conProyecto').innerHTML = `Con paneles pagarías: $${conProyecto}<br>
     Ahorro ($): $${sinProyecto-conProyecto}<br>
     Energía generada (kWh): ${totalgeneracion.toFixed(0)}<br>
@@ -3722,7 +3758,7 @@ function flujoFinanciero(event){
         var directivo = document.getElementById('directivo');
         var cetes = 0.09;
         //var cetes = parseFloat(document.getElementById('cetes').value)/100;
-        let sfv = (watt[(kwp/550)]);
+        let sfv = (watt[(kwp/paneles)]);
         //var antiguedad = document.getElementById('fecha'); //por definir
         //let mes = antiguedad.getMonth(); //por definir
 
@@ -3887,7 +3923,7 @@ function flujoFinanciero(event){
             b5.removeChild(list5[0]);
         }
         //contador del ciclo financiero 
-        while ( (FDE-FDT)> mensualidad ){
+        while ( (((FDE-FDT)> mensualidad) && (37>m)) ){ //(FDE-FDT)> mensualidad
             //console.log("mes "+ m + ": deuda: "+ i.toFixed(2) +" FDE:"+FDE.toFixed(2)+" FDT:"+ FDT.toFixed(2) + " Pagos: " +pagos.toFixed(2))
             //lista = "mes "+ m + ": deuda: "+ i.toFixed(2) +"----FDE:"+FDE.toFixed(2)+"----FDT:"+ FDT.toFixed(2) + "   Pagos: " +pagos.toFixed(2) + "<br>"
             col1 = "Mes "+ m +":" + "<br>"
@@ -4037,7 +4073,7 @@ function flujoFinanciero(event){
                     }else mensualidad=mensualidad
             }else mensualidad = mensualidad
         }
-    var advertencia = "<br> La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%.<br> Deuda: Es la diferencia entre el fondo de ahorro de la empresa y trabajador. <br> FRE y FRT: Son el fondo de ahorro de empresa y trabajador. <br> Pagos: Son los pagos acumulados. <br> Los datos mostrados son solo una simulación y esto no asegura los mismos resultados."
+    var advertencia = "<br> <strong> ADVERTENCIA </strong> <br><br> La simulación del préstamo esta diseñada para un máximo de 36 meses y en caso de superar este período, <br> la deuda del mes 36 se dividirá en 3, eso sera tu pago adicional cada año durante los 36 meses del préstamo. <br> La generación de los paneles inicia en enero, sí los paneles fueron instalados e interconectados en otro mes, <br> la simulación no dará resultados iguales. <br><br> La tasa de rendimiento anual del fondo de ahorro se contempla que sea del 9%.<br> Deuda: Es la diferencia entre el fondo de ahorro de la empresa y trabajador. <br> FRE y FRT: Son el fondo de ahorro de empresa y trabajador. <br> Pagos: Son los pagos acumulados. <br><br> Los datos mostrados son solo una simulación y esto no asegura los mismos resultados."
     document.getElementById('ad').innerHTML = advertencia;
     //console.log("Hijos es: " + list.length)
 }
