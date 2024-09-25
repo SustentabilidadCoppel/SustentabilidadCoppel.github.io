@@ -13,24 +13,24 @@ cuestionario.addEventListener("click", flujoFinanciero);
 //energetica.addEventListener("click", render);
 //------------------------------------------
 //Precios por numeros de paneles agregar el precio del proveedor Green Republic - watt y watts son las listas con los precios de paneles
-var watt = [0,0,23057.32,
-    34585.98,
-    46114.64,
-    51167.60,
-    61401.12,
-    71634.64,
-    81868.16,
-    88713.90,
-    98571.00,
-    108428.10,
-    118285.20,
-    119931.24,
-    129156.72,
-    138382.20,
-    144239.04,
-    153253.98,
-    162268.92,
-    171283.86
+var watt = [0,0,26502.67,
+    37593.46,
+    49585.63,
+    56228.13,
+    67473.76,
+    78719.38,
+    89965.01,
+    97487.80,
+    108319.78,
+    119151.76,
+    129983.74,
+    137852.00,
+    148456.00,
+    152068.35,
+    169692.99,
+    178202.30,
+    188684.79,
+    199167.28
     ];
 let paneles = 550; //colocar el tamaño de los paneles disponibles por el proveedor
 function limpiar(event){
@@ -169,7 +169,7 @@ function candidatos(event){
     if (FDTT >= prestamo){
         const subtotal=neto-mensualidad;
         if ((subtotal) > (bruto*0.4)){
-            document.getElementById('resultado').innerHTML= "Felicidades tienes posibilidades de un prestamo de <b>$"+ prestamo.toFixed(2) +"</b> pesos, con una mensualidad de <b>$"+ mensualidad.toFixed(2) +"</b> pesos. Incluye un seguro por <b>$" + (prima*2).toFixed(0)+ "</b> pesos por un periodo de 2 años."; //el tiempo de tu prestamo es de <b>"+ credito +" meses </b> aproximadamente,
+            document.getElementById('resultado').innerHTML= "Felicidades tienes posibilidades de un prestamo de <b>$"+ prestamo.toFixed(2) +"</b> pesos, con una mensualidad de <b>$"+ mensualidad.toFixed(2) +"</b> pesos. El precio ya incluye un seguro por <b>$" + (prima*2).toFixed(0)+ "</b> pesos por una vigencia de 2 años."; //el tiempo de tu prestamo es de <b>"+ credito +" meses </b> aproximadamente,
         } else document.getElementById('resultado').innerText= "Lo siento, no cumples con los requisitos.";
     }
     else document.getElementById('resultado').innerText= "Lo siento, no cumples con los requisitos.";
@@ -243,24 +243,24 @@ function energia(event){
     //var facturaNormal = [];
 
     let tir=[];
-    let watts=[0,0,23057.32,
-        34585.98,
-        46114.64,
-        51167.60,
-        61401.12,
-        71634.64,
-        81868.16,
-        88713.90,
-        98571.00,
-        108428.10,
-        118285.20,
-        119931.24,
-        129156.72,
-        138382.20,
-        144239.04,
-        153253.98,
-        162268.92,
-        171283.86
+    let watts=[0,0,26502.67,
+        37593.46,
+        49585.63,
+        56228.13,
+        67473.76,
+        78719.38,
+        89965.01,
+        97487.80,
+        108319.78,
+        119151.76,
+        129983.74,
+        137852.00,
+        148456.00,
+        152068.35,
+        169692.99,
+        178202.30,
+        188684.79,
+        199167.28
         ];
     //precios de sistemas solares
     //----------empezar el ciclo for aqui for (kwp= 0.550; kwp<10.8; kwp+0.550)---------
