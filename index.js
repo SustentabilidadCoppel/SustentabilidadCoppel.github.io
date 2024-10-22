@@ -13,7 +13,7 @@ cuestionario.addEventListener("click", flujoFinanciero);
 //energetica.addEventListener("click", render);
 //------------------------------------------
 //Precios por numeros de paneles agregar el precio del proveedor Green Republic - watt y watts son las listas con los precios de paneles
-var watt = [0,0,26502.67,
+var watt = [0,0,25619.24,
     37593.46,
     49585.63,
     56228.13,
@@ -243,7 +243,7 @@ function energia(event){
     //var facturaNormal = [];
 
     let tir=[];
-    let watts=[0,0,26502.67,
+    let watts=[0,0,25619.24,
         37593.46,
         49585.63,
         56228.13,
